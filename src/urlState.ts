@@ -40,7 +40,7 @@ export function read(loc: Pick<Location, 'pathname' | 'search'> = location): Vie
   return s;
 }
 
-export const hasState = (s: ViewState) => Object.keys(s).length > 0;
+export const hasState = (s: ViewState) => Object.values(s).some((v) => v !== undefined);
 
 /** Filters from the URL, on top of "no choice". */
 export const choiceFrom = (s: ViewState, any: Choice): Choice => ({ kind: s.type ?? any.kind, budget: s.budget ?? any.budget, when: s.move ?? any.when });

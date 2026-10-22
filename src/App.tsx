@@ -108,10 +108,12 @@ export function App() {
       const index: Index = await (await fetch('/data/index.json')).json();
       setData(index);
 
-      // A link can carry the whole view. An unknown project means the link is stale: start normally.
+      // A link can carry the whole view. index.json only lists published projects, so an unknown or unpublished
+      // project is dropped; the position and filters still apply, and the sheet stays at peek.
       const url = read();
       const linked = url.project ? index.projects.find((p) => p.id === url.project) : undefined;
-      const state: ViewState = url.project && !linked ? {} : url;
+      const state: ViewState = { ...url };
+      if (!linked) { delete state.project; delete state.sheet; }
       const restoring = hasState(state);
       if (restoring) setChoice(choiceFrom(state, ANY));
 

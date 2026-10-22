@@ -40,7 +40,9 @@ export function Emi({ price, defaults }: { price: number; defaults: EmiDefaults 
     <div class="emi">
       <p class="emi-v">≈ <b>{rupees(monthly(price, t))}/month</b> EMI</p>
       <p class="emi-t">
-        {t.down}% down · {t.rate}% · {t.years} years · Your bank's rate may differ{' '}
+        {t.down}% down · {t.rate}% · {t.years} years.{' '}
+        {/* The note names the assumed rate, so it only fits while that rate is in use. */}
+        {t.rate === defaults.ratePct && defaults.note ? defaults.note : "Your bank's rate may differ."}{' '}
         <button class="emi-change" type="button" aria-expanded={open} onClick={() => setOpen(!open)}>{open ? 'Done' : 'Change'}</button>
       </p>
       {open && (
@@ -56,7 +58,6 @@ export function Emi({ price, defaults }: { price: number; defaults: EmiDefaults 
               </div>
             );
           })}
-          {defaults.note && <p class="emi-note">{defaults.note}</p>}
         </div>
       )}
     </div>

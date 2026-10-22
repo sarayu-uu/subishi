@@ -77,7 +77,6 @@
 .step button:active { transform: scale(.97); }
 .step button:disabled { color: var(--line); }
 .step output { text-align: center; font-weight: 600; font-variant-numeric: tabular-nums; }
-.emi-note { margin: 4px 0 0; font-size: 13px; color: var(--muted); }
 .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 12px 0 0; }
 .facts div { background: var(--cream); border-radius: 14px; padding: 10px 14px; min-width: 0; }
 .facts .wide { grid-column: 1 / -1; }

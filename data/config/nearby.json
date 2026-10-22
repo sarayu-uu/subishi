@@ -1,80 +1,89 @@
 {
-  "_about": "Which landmarks count as 'nearby' for each area's projects. Drive times use the nearest school, then the nearest hospital, then the nearest job hub, then the airport if a slot is free. Landmarks without a location are skipped until filled in (see \"verify\" in landmarks.json). Categories: school, hospital, market, metro.",
-  "areas": {
-    "maheshwaram": {
-      "projects": [
-        "serenity",
-        "sierra",
-        "breeze",
-        "nirvana"
-      ],
-      "landmarks": [
-        "dps-aerocity",
-        "sancta-maria",
-        "jims-hospital"
-      ],
-      "source": "Subishi's Sierra website",
-      "todo": "add a market and a metro stop"
-    },
-    "mokila": {
-      "projects": [
-        "fortuna",
-        "windsor",
-        "waterford",
-        "mist",
-        "mist-signature",
-        "iris",
-        "bliss",
-        "sapphire",
-        "town-centre"
-      ],
-      "landmarks": [
-        "indus-school"
-      ],
-      "todo": "add a hospital, a market and a metro stop"
-    },
-    "kompally": {
-      "projects": [
-        "forest-edge",
-        "polam",
-        "nest",
-        "gowthami"
-      ],
-      "landmarks": [],
-      "byProject": {
-        "nest": [
-          "neeraj-school"
-        ]
-      },
-      "todo": "add schools for Forest Edge, Polam and Gowthami, a hospital, a market and a metro stop"
-    },
-    "shankarpally": {
-      "projects": [
-        "spark"
-      ],
-      "landmarks": [],
-      "todo": "add a school, a hospital, a market and a metro stop"
-    },
-    "miyapur": {
-      "projects": [
-        "silver-oaks"
-      ],
-      "landmarks": [],
-      "todo": "add a school, a hospital, a market and a metro stop"
-    },
-    "banjara-hills": {
-      "projects": [
-        "valencia"
-      ],
-      "landmarks": [],
-      "todo": "add a school, a hospital, a market and a metro stop"
-    },
-    "kamareddy": {
-      "projects": [
-        "kamareddy-castles"
-      ],
-      "landmarks": [],
-      "todo": "add a school, a hospital and a market"
-    }
-  }
+  "serenity": [
+    "dps-aerocity",
+    "jims-hospital"
+  ],
+  "sierra": [
+    "dps-aerocity",
+    "jims-hospital"
+  ],
+  "breeze": [
+    "dps-aerocity",
+    "jims-hospital"
+  ],
+  "nirvana": [],
+  "fortuna": [
+    "indus-school",
+    "dps-kollur",
+    "continental-hospitals"
+  ],
+  "windsor": [
+    "indus-school",
+    "dps-kollur",
+    "continental-hospitals"
+  ],
+  "waterford": [
+    "indus-school",
+    "dps-kollur",
+    "continental-hospitals"
+  ],
+  "mist": [
+    "indus-school",
+    "dps-kollur",
+    "continental-hospitals"
+  ],
+  "mist-signature": [
+    "indus-school",
+    "dps-kollur",
+    "continental-hospitals"
+  ],
+  "iris": [
+    "indus-school",
+    "dps-kollur",
+    "continental-hospitals"
+  ],
+  "bliss": [
+    "indus-school",
+    "dps-kollur",
+    "continental-hospitals"
+  ],
+  "sapphire": [
+    "indus-school",
+    "dps-kollur",
+    "continental-hospitals"
+  ],
+  "town-centre": [
+    "indus-school",
+    "dps-kollur",
+    "continental-hospitals"
+  ],
+  "spark": [
+    "indus-school",
+    "src-hospital"
+  ],
+  "polam": [
+    "drs-school",
+    "malla-reddy-narayana"
+  ],
+  "gowthami": [
+    "drs-school",
+    "malla-reddy-narayana"
+  ],
+  "forest-edge": [
+    "sri-chaitanya-medchal",
+    "malla-reddy-narayana"
+  ],
+  "nest": [
+    "neeraj-school",
+    "malla-reddy-narayana"
+  ],
+  "valencia": [
+    "meridian-banjara",
+    "apollo-jubilee-hills"
+  ],
+  "silver-oaks": [
+    "silver-oaks-school",
+    "mirra-hospital"
+  ],
+  "kamareddy-castles": []
 }

@@ -113,11 +113,14 @@
   },
   {
     "id": "indus-school",
-    "name": "Indus International School Hyderabad",
+    "name": "Indus International School",
     "category": "school",
     "tier": "nearby",
-    "location": null,
-    "source": "add in Phase 2 — Mokila / Shankarpally campus",
+    "location": {
+      "lat": 17.4467,
+      "lng": 78.1795
+    },
+    "source": "approx: opposite Subishi Iris, per subishi.com/iris-luxury-homes",
     "verify": true
   },
   {
@@ -125,8 +128,11 @@
     "name": "Neeraj International School",
     "category": "school",
     "tier": "nearby",
-    "location": null,
-    "source": "add in Phase 2 — opp. Nest Residences",
+    "location": {
+      "lat": 17.5932,
+      "lng": 78.4908
+    },
+    "source": "approx: opposite Subishi Nest, per subishi.com/nest-residences",
     "verify": true
   },
   {
@@ -135,25 +141,139 @@
     "category": "school",
     "tier": "nearby",
     "location": null,
-    "verify": true,
-    "source": "Listed on Subishi's Sierra website (nearby schools and hospital)"
-  },
-  {
-    "id": "sancta-maria",
-    "name": "Sancta Maria International School",
-    "category": "school",
-    "tier": "nearby",
-    "location": null,
-    "verify": true,
-    "source": "Listed on Subishi's Sierra website (nearby schools and hospital)"
+    "source": "listed on subishisierra.com; coordinates needed",
+    "verify": true
   },
   {
     "id": "jims-hospital",
-    "name": "JIMS Hospital",
+    "name": "JIMS Hospital, Shamshabad",
     "category": "hospital",
     "tier": "nearby",
-    "location": null,
-    "verify": true,
-    "source": "Listed on Subishi's Sierra website (nearby schools and hospital)"
+    "location": {
+      "lat": 17.18677,
+      "lng": 78.32818
+    },
+    "source": "OpenStreetMap; also listed on subishisierra.com",
+    "verify": false
+  },
+  {
+    "id": "dps-kollur",
+    "name": "Delhi Public School, Kollur",
+    "category": "school",
+    "tier": "nearby",
+    "location": {
+      "lat": 17.44847,
+      "lng": 78.24126
+    },
+    "source": "OpenStreetMap",
+    "verify": false
+  },
+  {
+    "id": "drs-school",
+    "name": "DRS International School",
+    "category": "school",
+    "tier": "nearby",
+    "location": {
+      "lat": 17.55854,
+      "lng": 78.46358
+    },
+    "source": "OpenStreetMap",
+    "verify": false
+  },
+  {
+    "id": "sri-chaitanya-medchal",
+    "name": "Sri Chaitanya School, Medchal",
+    "category": "school",
+    "tier": "nearby",
+    "location": {
+      "lat": 17.6357,
+      "lng": 78.48592
+    },
+    "source": "OpenStreetMap",
+    "verify": false
+  },
+  {
+    "id": "meridian-banjara",
+    "name": "Meridian School, Banjara Hills",
+    "category": "school",
+    "tier": "nearby",
+    "location": {
+      "lat": 17.41966,
+      "lng": 78.44331
+    },
+    "source": "OpenStreetMap",
+    "verify": false
+  },
+  {
+    "id": "silver-oaks-school",
+    "name": "Silver Oaks International School",
+    "category": "school",
+    "tier": "nearby",
+    "location": {
+      "lat": 17.54241,
+      "lng": 78.36454
+    },
+    "source": "OpenStreetMap",
+    "verify": false
+  },
+  {
+    "id": "continental-hospitals",
+    "name": "Continental Hospitals, Nanakramguda",
+    "category": "hospital",
+    "tier": "nearby",
+    "location": {
+      "lat": 17.41766,
+      "lng": 78.33913
+    },
+    "source": "OpenStreetMap",
+    "verify": false
+  },
+  {
+    "id": "src-hospital",
+    "name": "SRC Hospital, Shankarpally",
+    "category": "hospital",
+    "tier": "nearby",
+    "location": {
+      "lat": 17.45532,
+      "lng": 78.13216
+    },
+    "source": "OpenStreetMap",
+    "verify": false
+  },
+  {
+    "id": "malla-reddy-narayana",
+    "name": "Malla Reddy Narayana Hospital, Suraram",
+    "category": "hospital",
+    "tier": "nearby",
+    "location": {
+      "lat": 17.54399,
+      "lng": 78.43338
+    },
+    "source": "OpenStreetMap",
+    "verify": false
+  },
+  {
+    "id": "apollo-jubilee-hills",
+    "name": "Apollo Hospitals, Jubilee Hills",
+    "category": "hospital",
+    "tier": "nearby",
+    "location": {
+      "lat": 17.41494,
+      "lng": 78.41318
+    },
+    "source": "OpenStreetMap",
+    "verify": false
+  },
+  {
+    "id": "mirra-hospital",
+    "name": "Mirra Multi Specialty Hospital, Miyapur",
+    "category": "hospital",
+    "tier": "nearby",
+    "location": {
+      "lat": 17.50447,
+      "lng": 78.35647
+    },
+    "source": "OpenStreetMap",
+    "verify": false
   }
 ]
