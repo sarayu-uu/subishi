@@ -11,6 +11,7 @@ import { SheetBoundary } from './sheet/Boundary';
 import { ANY, fits, summary, type Choice } from './filters/filters';
 import { choiceFrom, fromChoice, hasState, read, toShareUrl, write, type ViewState } from './urlState';
 import { share } from './share';
+import { trackHome } from './analytics';
 import { HYDERABAD } from './map/telangana';
 
 const START = performance.now();
@@ -282,6 +283,8 @@ export function App() {
 
   useEffect(() => { pinsApi.current?.setFilter(shownOk); }, [choice, query]);
   useEffect(() => { pinsApi.current?.select(selectedId); }, [selectedId]);
+  // A home opened in the app counts as a visit to its page (a shared /p/<id> link is already counted on load).
+  useEffect(() => { if (selectedId && ready.current) trackHome(selectedId); }, [selectedId]);
   useEffect(() => { sync(); checkFar(); }, [selectedId, snap, choice]);
   useEffect(() => { if (searching) searchRef.current?.focus(); }, [searching]);
   useEffect(() => {
