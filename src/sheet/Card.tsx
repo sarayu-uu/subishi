@@ -2,14 +2,16 @@ import type { JSX } from 'preact';
 import { useEffect, useRef, useState } from 'preact/hooks';
 import type { Brand, Project, Status, Zone } from '../types';
 import { badge, count, oneLine, possession, toPlace } from './format';
-import { Back, Car, Doc, External, Phone, Pin, Play, Shield, Sparkle } from './icons';
+import { Emi } from './Emi';
+import { Back, Briefcase, Cap, Car, Cross, Doc, External, Phone, Pin, Plane, Play, Share, Shield, Sparkle } from './icons';
 
-type Props = { p: Project; status: Status; zone?: Zone; brand: Brand; onBack: () => void; /** opened from the keyboard: move focus into the card */ focus?: boolean };
+type Props = { p: Project; status: Status; zone?: Zone; brand: Brand; onBack: () => void; onShare: () => void; /** opened from the keyboard: move focus into the card */ focus?: boolean };
 type Fact = { k: string; v: string; sub?: string };
 type Btn = { href: string; label: string; icon: JSX.Element; pri?: boolean; ext?: boolean };
 const ext = { target: '_blank', rel: 'noopener' };
+const PLACE_ICON: Record<string, () => JSX.Element> = { school: Cap, hospital: Cross, jobs: Briefcase, transport: Plane };
 
-export function Card({ p, status, zone, brand, onBack, focus }: Props) {
+export function Card({ p, status, zone, brand, onBack, onShare, focus }: Props) {
   const done = p.status === 'delivered', soon = p.status === 'upcoming';
   const [heroOk, setHeroOk] = useState(true);
   const [shown, setShown] = useState(false); // photo fades in once it has loaded
@@ -68,6 +70,7 @@ export function Card({ p, status, zone, brand, onBack, focus }: Props) {
           ) : <><b>On request</b><small>Call us for today's price</small></>}
         </div>
       )}
+      {!done && !soon && p.price?.from && brand.emi && <Emi price={p.price.from} defaults={brand.emi} />}
 
       {facts.length > 0 && (
         <dl class="facts">
@@ -80,7 +83,7 @@ export function Card({ p, status, zone, brand, onBack, focus }: Props) {
       {!done && p.driveTimes.length > 0 && (
         <div class="drive">
           <h3>How far by car</h3>
-          <ul>{p.driveTimes.map((d) => <li key={d.id}><Car /><span>{toPlace(d)} · <b>{d.time}</b></span></li>)}</ul>
+          <ul>{p.driveTimes.map((d) => { const Icon = PLACE_ICON[d.category] ?? Car; return <li key={d.id}><Icon /><span>{toPlace(d)} · <b>{d.time}</b></span></li>; })}</ul>
           <p>Estimated from distance; traffic varies.</p>
         </div>
       )}
@@ -92,7 +95,10 @@ export function Card({ p, status, zone, brand, onBack, focus }: Props) {
       {trust && <div class="trust"><Shield />{trust}</div>}
 
       <div class="acts">
-        {btns.filter((b) => b.pri).map((b) => <a class="btn pri" href={b.href} {...(b.ext ? ext : {})}>{b.icon}{b.label}</a>)}
+        <div class="lead">
+          {btns.filter((b) => b.pri).map((b) => <a class="btn pri" href={b.href} {...(b.ext ? ext : {})}>{b.icon}{b.label}</a>)}
+          <button class="btn share" type="button" onClick={onShare}><Share />Share with family</button>
+        </div>
         {/* The rest share one compact row so the bar does not cover the card at half height. */}
         <div class="more">
           {btns.filter((b) => !b.pri).map((b) => <a class="btn" href={b.href} {...(b.ext ? ext : {})}>{b.icon}{b.label}</a>)}

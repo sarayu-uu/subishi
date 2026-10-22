@@ -6,20 +6,21 @@
   "scripts": {
     "data": "tsx scripts/build-data.ts",
     "dev": "npm run data && vite --host",
-    "build": "npm run data && tsc -b && vite build",
+    "build": "npm run data && tsc -b && vite build && tsx scripts/make-share-pages.ts",
     "preview": "vite preview --host",
     "links": "tsx scripts/check-links.ts",
     "style": "tsx scripts/make-style.ts",
-    "pins": "tsx scripts/make-pins.ts"
+    "pins": "tsx scripts/make-pins.ts",
+    "fonts": "python scripts/make-fonts.py"
   },
   "dependencies": {
-    "@fontsource-variable/fraunces": "5.3.0",
     "@fontsource/figtree": "5.3.0",
     "maplibre-gl": "6.11.2",
     "preact": "^10.29.8",
     "supercluster": "9.1.0"
   },
   "devDependencies": {
+    "@fontsource-variable/fraunces": "5.3.0",
     "@preact/preset-vite": "^2.10.6",
     "@types/node": "^24.13.3",
     "@types/supercluster": "7.1.3",

@@ -7,7 +7,7 @@
 @keyframes fp-fade { from { opacity: 0; } }
 @keyframes fp-rise { from { transform: translateY(100%); } }
 .fp-head { flex: none; display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 16px 8px 4px 20px; }
-.fp-head h2 { margin: 0; font: 500 22px/1.2 var(--display); font-variation-settings: "SOFT" 50; }
+.fp-head h2 { margin: 0; font: 600 22px/1.2 var(--display); }
 .fp-x { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 22px; }
 .fp-x svg { width: 20px; height: 20px; fill: none; stroke: var(--ink); stroke-width: 1.8; stroke-linecap: round; }
 .fp-body { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 0 20px 8px; }

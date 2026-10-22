@@ -8,8 +8,9 @@ export type Project = {
   approvals: { rera?: string; authority?: string }; highlights: string[];
   links: Partial<Record<'website' | 'websiteAlt' | 'video' | 'videoIntro' | 'brochure' | 'maps' | 'instagram' | 'facebook', string>>;
   media: { thumb?: string; hero?: string; pin?: string }; order: number;
-  driveTimes: { id: string; name: string; time: string }[];
+  driveTimes: { id: string; name: string; category: string; time: string }[];
 };
 export type Zone = { id: string; label: string; order?: number; view?: { center: [number, number]; zoom: number }; outsideCity?: boolean; distanceNote?: string };
-export type Brand = { contact?: { phone?: string; phoneDisplay?: string } };
+export type Emi = { downPaymentPct: number; ratePct: number; years: number; note?: string };
+export type Brand = { contact?: { phone?: string; phoneDisplay?: string }; emi?: Emi };
 export type Index = { statuses: Status[]; zones: Zone[]; projects: Project[]; brand: Brand };

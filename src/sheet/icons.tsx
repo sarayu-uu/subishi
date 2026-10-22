@@ -26,3 +26,9 @@ export const Tree = () => <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M
 export const Plane = () => <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 13.5L3 11l1.5-1.5 7.5.5 4-4.5c1-1 2.6-1.4 3.2-.7s.3 2.2-.7 3.2l-4.5 4 .5 7.5L13 21l-2.5-7.5z" /></svg>;
 export const Dome = () => <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20v-7M18 20v-7M5 13h14M12 4a6 6 0 016 6v3H6v-3a6 6 0 016-6zM12 4V2.5M10 20v-4h4v4" /></svg>;
 export const Road = () => <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3L4 21M16 3l4 18M12 4v3M12 10.5v3M12 17v3" /></svg>;
+export const Share = () => (
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V4M8 7.5L12 3.5l4 4" /><path d="M7 10.5H6a1.5 1.5 0 00-1.5 1.5v7A1.5 1.5 0 006 20.5h12a1.5 1.5 0 001.5-1.5v-7a1.5 1.5 0 00-1.5-1.5h-1" /></svg>
+);
+// Drive-time categories
+export const Cap = () => <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 9.5L12 5l9.5 4.5L12 14z" /><path d="M6.5 11.5v4.2c1.4 1.4 3.3 2.1 5.5 2.1s4.1-.7 5.5-2.1v-4.2M21.5 9.5v5" /></svg>;
+export const Cross = () => <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4" /><path d="M12 8v8M8 12h8" /></svg>;

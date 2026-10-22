@@ -14,7 +14,7 @@
 /* list: greeting, then areas, then homes grouped by status */
 .hello { margin-bottom: 4px; }
 .hello p { margin: 0; font-size: 14px; color: var(--muted); }
-.hello h2 { margin: 0; font: 500 24px/1.2 var(--display); }
+.hello h2 { margin: 0; font: 600 24px/1.2 var(--display); }
 .hello .sub { margin-top: 1px; font-size: 15px; }
 .zones { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: 0 -18px 4px; padding: 0 18px; }
 .zones::-webkit-scrollbar { display: none; }
@@ -30,10 +30,10 @@
   border-radius: 18px; text-align: left; width: calc(100% + 16px); transition: transform .12s; }
 .row:active { background: var(--cream); transform: scale(.98); }
 @media (hover: hover) { .row:hover { background: #FBF6EE; } }
-.thumb { display: block; width: 88px; height: 64px; border-radius: 14px; overflow: hidden; background: var(--line); }
+.thumb { display: block; width: 88px; height: 64px; aspect-ratio: 88 / 64; border-radius: 14px; overflow: hidden; background: var(--cream); }
 .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .row .mid { min-width: 0; }
-.row b { display: block; font: 500 19px/1.2 var(--display); }
+.row b { display: block; font: 600 19px/1.2 var(--display); }
 .row small { margin-top: 2px; font-size: 14px; line-height: 1.35; color: var(--muted);
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .row .rt { font-size: 15px; font-weight: 600; text-align: right; white-space: nowrap; color: var(--honey-text); font-variant-numeric: tabular-nums; }
@@ -51,12 +51,12 @@
 .soonart { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; color: #fff;
   background: radial-gradient(120% 90% at 30% 20%, #7480BF 0%, #5A68AE 55%, #4C5A9E 100%); }
 .soonart svg { width: 26px; height: 26px; fill: currentColor; opacity: .9; }
-.soonart b { display: block; font: 500 30px/1.1 var(--display); font-variation-settings: "SOFT" 100; margin-top: 6px; }
+.soonart b { display: block; font: 600 30px/1.1 var(--display); margin-top: 6px; }
 .soonart span { display: block; font-size: 15px; margin-top: 4px; }
 .badge { position: absolute; left: 10px; top: 10px; display: inline-flex; align-items: center; gap: 7px; height: 30px; padding: 0 12px 0 10px; border-radius: 15px;
   font-size: 14px; font-weight: 600; color: var(--ink); background: rgba(255,252,247,.95); box-shadow: 0 2px 8px rgba(42,38,32,.16); }
 .badge i { width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
-.title { margin: 14px 0 2px; font: 500 30px/1.1 var(--display); text-wrap: balance; }
+.title { margin: 14px 0 2px; font: 600 30px/1.1 var(--display); text-wrap: balance; }
 .where { font-size: 15px; color: var(--muted); display: flex; align-items: center; gap: 5px; }
 .where svg { width: 16px; height: 16px; stroke-width: 1.8; }
 .one { margin: 10px 0 0; font-size: 17px; font-weight: 600; }
@@ -66,6 +66,18 @@
 .price b { display: block; font-size: 20px; font-weight: 600; color: var(--honey-text); font-variant-numeric: tabular-nums; }
 .price small { display: block; margin-top: 2px; font-size: 13px; color: var(--muted); }
 .price a { color: inherit; }
+.emi { margin-top: 8px; padding: 12px 16px; border-radius: 16px; background: var(--cream); }
+.emi-v { margin: 0; font-size: 16px; }
+.emi-v b { font-weight: 600; color: var(--honey-text); font-variant-numeric: tabular-nums; }
+.emi-t { margin: 2px 0 0; font-size: 13px; color: var(--muted); }
+.emi-change { min-height: 44px; margin: -14px 0 -14px 2px; padding: 0 4px; font-size: 13px; font-weight: 600; color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+.emi-panel { margin-top: 8px; display: grid; gap: 4px; }
+.step { display: grid; grid-template-columns: 1fr 44px 92px 44px; align-items: center; font-size: 15px; }
+.step button { width: 44px; height: 44px; border-radius: 22px; font-size: 22px; line-height: 1; color: var(--green); background: var(--paper); border: 1px solid var(--line); transition: transform .12s; }
+.step button:active { transform: scale(.97); }
+.step button:disabled { color: var(--line); }
+.step output { text-align: center; font-weight: 600; font-variant-numeric: tabular-nums; }
+.emi-note { margin: 4px 0 0; font-size: 13px; color: var(--muted); }
 .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 12px 0 0; }
 .facts div { background: var(--cream); border-radius: 14px; padding: 10px 14px; min-width: 0; }
 .facts .wide { grid-column: 1 / -1; }
@@ -89,7 +101,11 @@
 .btn { border-radius: 16px; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600; text-decoration: none;
   border: 1px solid var(--line); background: var(--paper); color: var(--ink); transition: transform .12s; }
 .btn svg { width: 19px; height: 19px; stroke-width: 1.8; }
-.btn.pri { height: 52px; font-size: 16px; background: var(--green); border-color: var(--green); color: #fff; }
+.lead { display: flex; gap: 8px; }
+.btn.pri { flex: 1 1 auto; min-width: 0; height: 52px; font-size: 16px; background: var(--green); border-color: var(--green); color: #fff; }
+/* "Share with family" sits beside the main button and wraps to two lines on narrow phones. */
+.btn.share { flex: 0 1 auto; min-height: 52px; padding: 4px 14px; font-size: 15px; line-height: 1.2; color: var(--green); text-align: left; }
+.btn.share svg { color: var(--green); }
 .more { display: flex; gap: 8px; }
 .more:empty { display: none; }
 .more .btn { flex: 1 1 0; min-width: 0; height: 56px; flex-direction: column; gap: 3px; font-size: 13px; }

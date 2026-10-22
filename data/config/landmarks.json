@@ -113,11 +113,12 @@
   },
   {
     "id": "indus-school",
-    "name": "Indus International School",
+    "name": "Indus International School Hyderabad",
     "category": "school",
     "tier": "nearby",
     "location": null,
-    "source": "add in Phase 2 — Mokila / Shankarpally campus"
+    "source": "add in Phase 2 — Mokila / Shankarpally campus",
+    "verify": true
   },
   {
     "id": "neeraj-school",
@@ -125,6 +126,34 @@
     "category": "school",
     "tier": "nearby",
     "location": null,
-    "source": "add in Phase 2 — opp. Nest Residences"
+    "source": "add in Phase 2 — opp. Nest Residences",
+    "verify": true
+  },
+  {
+    "id": "dps-aerocity",
+    "name": "Delhi Public School Aerocity",
+    "category": "school",
+    "tier": "nearby",
+    "location": null,
+    "verify": true,
+    "source": "Listed on Subishi's Sierra website (nearby schools and hospital)"
+  },
+  {
+    "id": "sancta-maria",
+    "name": "Sancta Maria International School",
+    "category": "school",
+    "tier": "nearby",
+    "location": null,
+    "verify": true,
+    "source": "Listed on Subishi's Sierra website (nearby schools and hospital)"
+  },
+  {
+    "id": "jims-hospital",
+    "name": "JIMS Hospital",
+    "category": "hospital",
+    "tier": "nearby",
+    "location": null,
+    "verify": true,
+    "source": "Listed on Subishi's Sierra website (nearby schools and hospital)"
   }
 ]

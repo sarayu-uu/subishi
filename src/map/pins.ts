@@ -10,6 +10,7 @@ const ORDER = ['ready', 'under-construction', 'upcoming', 'delivered']; // homes
 const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => `&${({ '&': 'amp', '<': 'lt', '>': 'gt', '"': 'quot' } as Record<string, string>)[c]};`);
 const NAMES_FROM = 11; // name tags under pins from this zoom
+const RADIUS = 96; // px; a cluster of three photos and "+N" is up to ~115 px wide, so closer clusters would overlap
 
 /** The round picture inside a pin or a cluster: the project photo, or a drawn stand-in when there is none. */
 function face(p: Project) {
@@ -23,7 +24,7 @@ export function createPins(map: Map, projects: Project[], statuses: Status[], on
   const label = Object.fromEntries(statuses.map((s) => [s.id, s.label]));
   const byId = new globalThis.Map(projects.map((p) => [p.id, p]));
   let visible = projects;
-  let index = new Supercluster<{ id: string; status: string }>({ radius: 52, maxZoom: 15 });
+  let index = new Supercluster<{ id: string; status: string }>({ radius: RADIUS, maxZoom: 15 });
   const markers = new globalThis.Map<string, Marker>();
   let popIn = false;
   let selected: string | null = null;
@@ -94,7 +95,7 @@ export function createPins(map: Map, projects: Project[], statuses: Status[], on
   map.on('zoomend', () => { markers.forEach((m) => m.remove()); markers.clear(); render(); });
 
   return {
-    setFilter(fn: (p: Project) => boolean) { visible = projects.filter(fn); if (!loaded) return; index = new Supercluster({ radius: 52, maxZoom: 15 }); load();
+    setFilter(fn: (p: Project) => boolean) { visible = projects.filter(fn); if (!loaded) return; index = new Supercluster({ radius: RADIUS, maxZoom: 15 }); load();
       markers.forEach((m) => m.remove()); markers.clear(); render(); },
     /** Lowest zoom (10–16) at which this project shows as its own pin rather than inside a cluster. */
     zoomFor(id: string) {

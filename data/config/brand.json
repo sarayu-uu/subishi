@@ -76,5 +76,11 @@
     "Instagram @subishiofficial + YouTube @subishi for the brand; @subishigroup on Subishi City projects",
     "Older YouTube channel and Subishi Homes Facebook hidden",
     "Logo: traced to SVG in Phase 1 from the website PNG"
-  ]
+  ],
+  "emi": {
+    "downPaymentPct": 20,
+    "ratePct": 8.5,
+    "years": 20,
+    "note": "Assumed rate. Your bank's rate may differ."
+  }
 }

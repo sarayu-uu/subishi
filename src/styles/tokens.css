@@ -19,8 +19,7 @@
 body { font: 16px/1.5 var(--ui); color: var(--ink); background: var(--cream); -webkit-font-smoothing: antialiased; }
 button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; -webkit-tap-highlight-color: transparent; }
 :focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
-/* Fraunces: SOFT rounds the letterforms; opsz follows the font size automatically. */
-h1, h2, .title, .row b { font-variation-settings: "SOFT" 50; font-optical-sizing: auto; font-weight: 500; }
+h1, h2, .title, .row b { font-optical-sizing: auto; font-weight: 600; } /* Fraunces: one weight; SOFT is baked into the file */
 
 #map { position: absolute; inset: 0; background: var(--cream); }
 
@@ -40,7 +39,16 @@ h1, h2, .title, .row b { font-variation-settings: "SOFT" 50; font-optical-sizing
 .ibtn { position: relative; width: 44px; height: 44px; display: grid; place-items: center; color: var(--ink); }
 .ibtn::before { content: ""; position: absolute; inset: 2px; border-radius: 12px; background: var(--green-soft); opacity: 0; transition: opacity .15s; }
 .ibtn:active::before { opacity: 1; }
-.ibtn svg { position: relative; width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+.ibtn svg { position: relative; width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ibtn.share { margin-left: auto; } /* share sits just left of search */
+
+/* Small message under the bars ("Link copied…"). Announced politely to screen readers. */
+.toast { position: absolute; z-index: 70; left: 50%; top: calc(env(safe-area-inset-top) + 128px); max-width: min(92vw, 420px); transform: translate(-50%, -8px);
+  padding: 10px 16px; border-radius: 16px; background: var(--green); color: #fff; font-size: 15px; box-shadow: var(--shadow);
+  opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; }
+.toast.on { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+.toast:empty { padding: 0; }
+.toast-url { display: block; margin-top: 4px; font-weight: 600; word-break: break-all; user-select: all; -webkit-user-select: all; }
 
 /* "What are you looking for?" bar, 8 px under the nav. Shows a summary of the choice once one is made. */
 .ask { position: absolute; z-index: 20; left: max(12px, env(safe-area-inset-left)); right: max(12px, env(safe-area-inset-right));
