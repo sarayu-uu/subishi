@@ -1,0 +1,52 @@
+{
+  "id": "waterford",
+  "name": "Waterford",
+  "tagline": "70 villas on 800+ sq yd plots",
+  "status": "delivered",
+  "type": "villa",
+  "zone": "west",
+  "location": {
+    "lat": 17.431923,
+    "lng": 78.209355,
+    "locality": "Mokila",
+    "precision": "exact"
+  },
+  "config": [
+    "5 BHK"
+  ],
+  "sizes": {
+    "builtUpSft": [
+      4765,
+      4812
+    ],
+    "plotSqYd": [
+      800
+    ]
+  },
+  "scale": {
+    "units": 70,
+    "unitLabel": "villas",
+    "acres": 19
+  },
+  "approvals": {},
+  "nearby": [],
+  "highlights": [],
+  "links": {
+    "website": "https://subishi.com/waterford-luxury-homes/"
+  },
+  "media": {
+    "thumb": "/img/projects/waterford/thumb.webp",
+    "hero": "/img/projects/waterford/hero.webp"
+  },
+  "published": true,
+  "order": 200,
+  "meta": {
+    "lastVerified": "2026-10-22",
+    "sources": [
+      "https://subishi.com/waterford-luxury-homes/"
+    ],
+    "todo": [
+      "completion year"
+    ]
+  }
+}

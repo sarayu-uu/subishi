@@ -1,0 +1,51 @@
+{
+  "id": "mist-signature",
+  "name": "Mist Signature",
+  "tagline": "6 single-level signature villas",
+  "status": "delivered",
+  "type": "villa",
+  "zone": "west",
+  "location": {
+    "lat": 17.433142,
+    "lng": 78.196835,
+    "locality": "Mokila, near Gachibowli",
+    "precision": "exact"
+  },
+  "config": [
+    "5 BHK"
+  ],
+  "sizes": {
+    "builtUpSft": [
+      6000
+    ],
+    "plotSqYd": [
+      1600
+    ]
+  },
+  "scale": {
+    "units": 6,
+    "unitLabel": "villas",
+    "acres": 3
+  },
+  "approvals": {},
+  "nearby": [],
+  "highlights": [],
+  "links": {
+    "website": "https://subishi.com/mist-signature-homes/"
+  },
+  "media": {
+    "thumb": "/img/projects/mist-signature/thumb.webp",
+    "hero": "/img/projects/mist-signature/hero.webp"
+  },
+  "published": true,
+  "order": 200,
+  "meta": {
+    "lastVerified": "2026-10-22",
+    "sources": [
+      "https://subishi.com/mist-signature-homes/"
+    ],
+    "todo": [
+      "completion year"
+    ]
+  }
+}

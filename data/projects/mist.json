@@ -1,0 +1,48 @@
+{
+  "id": "mist",
+  "name": "Mist",
+  "tagline": "62 independent villas",
+  "status": "delivered",
+  "type": "villa",
+  "zone": "west",
+  "location": {
+    "lat": 17.434088,
+    "lng": 78.19736,
+    "locality": "Mokila",
+    "precision": "exact"
+  },
+  "config": [
+    "5 BHK"
+  ],
+  "sizes": {
+    "builtUpSft": [
+      5400
+    ]
+  },
+  "scale": {
+    "units": 62,
+    "unitLabel": "villas",
+    "acres": 20
+  },
+  "approvals": {},
+  "nearby": [],
+  "highlights": [],
+  "links": {
+    "website": "https://subishi.com/mist-luxury-homes/"
+  },
+  "media": {
+    "thumb": "/img/projects/mist/thumb.webp",
+    "hero": "/img/projects/mist/hero.webp"
+  },
+  "published": true,
+  "order": 200,
+  "meta": {
+    "lastVerified": "2026-10-22",
+    "sources": [
+      "https://subishi.com/mist-luxury-homes/"
+    ],
+    "todo": [
+      "completion year"
+    ]
+  }
+}

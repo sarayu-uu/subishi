@@ -1,0 +1,83 @@
+[
+  {
+    "id": "west",
+    "label": "Near Financial District",
+    "areas": [
+      "Mokila",
+      "Shankarpally",
+      "Miyapur"
+    ],
+    "view": {
+      "center": [
+        78.25,
+        17.44
+      ],
+      "zoom": 11.2
+    },
+    "order": 1
+  },
+  {
+    "id": "north",
+    "label": "Kompally side",
+    "areas": [
+      "Kompally",
+      "Pudur",
+      "Kandlakoya"
+    ],
+    "view": {
+      "center": [
+        78.5,
+        17.58
+      ],
+      "zoom": 11.6
+    },
+    "order": 2
+  },
+  {
+    "id": "south",
+    "label": "Near the airport",
+    "areas": [
+      "Maheshwaram"
+    ],
+    "view": {
+      "center": [
+        78.35,
+        17.15
+      ],
+      "zoom": 12
+    },
+    "order": 3
+  },
+  {
+    "id": "central",
+    "label": "Banjara Hills",
+    "areas": [
+      "Banjara Hills"
+    ],
+    "view": {
+      "center": [
+        78.44,
+        17.42
+      ],
+      "zoom": 12.5
+    },
+    "order": 4
+  },
+  {
+    "id": "kamareddy",
+    "label": "Kamareddy",
+    "areas": [
+      "Kamareddy"
+    ],
+    "view": {
+      "center": [
+        78.3083,
+        18.3351
+      ],
+      "zoom": 13
+    },
+    "order": 5,
+    "outsideCity": true,
+    "distanceNote": "about 110 km north of Hyderabad"
+  }
+]

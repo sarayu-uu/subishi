@@ -1,0 +1,40 @@
+import { Map as MLMap, setWorkerUrl, type Map } from 'maplibre-gl';
+// MapLibre 6 runs its tile worker from a separate file; tell it where Vite put that file.
+import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
+import 'maplibre-gl/dist/maplibre-gl.css';
+
+import { TELANGANA_BOUNDS, revealTelangana } from './telangana';
+
+setWorkerUrl(workerUrl);
+
+export function createMap(container: HTMLElement): Promise<Map> {
+  const map = new MLMap({
+    container,
+    style: '/map/style.json',
+    bounds: TELANGANA_BOUNDS,
+    fitBoundsOptions: { padding: 24 },
+    minZoom: 3,
+    maxZoom: 17,
+    dragRotate: false,
+    pitchWithRotate: false,
+    touchPitch: false,
+    attributionControl: { compact: true },
+    fadeDuration: 150,
+  });
+  map.touchZoomRotate.disableRotation();
+  return new Promise((resolve, reject) => {
+    map.once('load', async () => {
+      const tg = await (await fetch('/geo/telangana.geojson')).json();
+      map.addSource('telangana', { type: 'geojson', data: tg });
+      const below = map.getStyle().layers.find((l: { type: string; id: string }) => l.type === 'symbol')?.id;
+      // Fill fades out as you zoom in, so it frames the state without tinting the city.
+      map.addLayer({ id: 'tg-fill', type: 'fill', source: 'telangana',
+        paint: { 'fill-color': '#1F4D3A', 'fill-opacity': 0, 'fill-opacity-transition': { duration: 400 } } }, below);
+      map.addLayer({ id: 'tg-line', type: 'line', source: 'telangana',
+        paint: { 'line-color': '#1F4D3A', 'line-width': 1.5, 'line-opacity': 0, 'line-opacity-transition': { duration: 400 } } }, below);
+      revealTelangana(map); // the map opens on Telangana, so frame it straight away
+      resolve(map);
+    });
+    map.once('error', (e) => reject((e as unknown as { error: Error }).error));
+  });
+}

@@ -1,0 +1,130 @@
+[
+  {
+    "id": "rgia",
+    "name": "RGI Airport",
+    "category": "transport",
+    "tier": "always",
+    "location": {
+      "lat": 17.23116,
+      "lng": 78.43178
+    },
+    "source": "OpenStreetMap (Nominatim)"
+  },
+  {
+    "id": "financial-district",
+    "name": "Financial District",
+    "category": "jobs",
+    "tier": "always",
+    "location": {
+      "lat": 17.4155,
+      "lng": 78.342
+    },
+    "source": "OpenStreetMap (Nominatim), area centre"
+  },
+  {
+    "id": "hitec-city",
+    "name": "HITEC City",
+    "category": "jobs",
+    "tier": "always",
+    "location": {
+      "lat": 17.4508,
+      "lng": 78.38345
+    },
+    "source": "OpenStreetMap (Nominatim)"
+  },
+  {
+    "id": "gachibowli",
+    "name": "Gachibowli",
+    "category": "jobs",
+    "tier": "always",
+    "location": {
+      "lat": 17.44362,
+      "lng": 78.35196
+    },
+    "source": "OpenStreetMap (Nominatim)"
+  },
+  {
+    "id": "hussain-sagar",
+    "name": "Hussain Sagar",
+    "category": "city",
+    "tier": "always",
+    "location": {
+      "lat": 17.42291,
+      "lng": 78.47542
+    },
+    "source": "OpenStreetMap (Nominatim)"
+  },
+  {
+    "id": "kokapet",
+    "name": "Kokapet",
+    "category": "jobs",
+    "tier": "nearby",
+    "location": {
+      "lat": 17.39486,
+      "lng": 78.33652
+    },
+    "source": "OpenStreetMap (Nominatim)"
+  },
+  {
+    "id": "statue-of-equality",
+    "name": "Statue of Equality",
+    "category": "landmark",
+    "tier": "nearby",
+    "location": {
+      "lat": 17.1858,
+      "lng": 78.33315
+    },
+    "source": "OpenStreetMap (Nominatim)"
+  },
+  {
+    "id": "orr-6",
+    "name": "ORR Exit 6 (Kandlakoya)",
+    "category": "transport",
+    "tier": "nearby",
+    "location": {
+      "lat": 17.59911,
+      "lng": 78.49241
+    },
+    "source": "OpenStreetMap (Nominatim), junction — verify exit number"
+  },
+  {
+    "id": "orr-15",
+    "name": "ORR Exit 15",
+    "category": "transport",
+    "tier": "nearby",
+    "location": null,
+    "source": "add in Phase 2 from map data"
+  },
+  {
+    "id": "orr-2",
+    "name": "ORR Exit 2",
+    "category": "transport",
+    "tier": "nearby",
+    "location": null,
+    "source": "add in Phase 2 from map data"
+  },
+  {
+    "id": "e-city-maheshwaram",
+    "name": "E City, Maheshwaram",
+    "category": "jobs",
+    "tier": "nearby",
+    "location": null,
+    "source": "add in Phase 2"
+  },
+  {
+    "id": "indus-school",
+    "name": "Indus International School",
+    "category": "school",
+    "tier": "nearby",
+    "location": null,
+    "source": "add in Phase 2 — Mokila / Shankarpally campus"
+  },
+  {
+    "id": "neeraj-school",
+    "name": "Neeraj International School",
+    "category": "school",
+    "tier": "nearby",
+    "location": null,
+    "source": "add in Phase 2 — opp. Nest Residences"
+  }
+]

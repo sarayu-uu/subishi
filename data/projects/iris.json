@@ -1,0 +1,50 @@
+{
+  "id": "iris",
+  "name": "Iris",
+  "tagline": "151 villas opposite Indus International School",
+  "status": "delivered",
+  "type": "villa",
+  "zone": "west",
+  "location": {
+    "lat": 17.447462,
+    "lng": 78.178908,
+    "locality": "Mokila",
+    "precision": "exact"
+  },
+  "config": [
+    "3 BHK"
+  ],
+  "sizes": {
+    "builtUpSft": [
+      2550
+    ]
+  },
+  "scale": {
+    "units": 151,
+    "unitLabel": "villas",
+    "acres": 17.5
+  },
+  "approvals": {
+    "rera": "P02400001646"
+  },
+  "nearby": [],
+  "highlights": [],
+  "links": {
+    "website": "https://subishi.com/iris-luxury-homes/"
+  },
+  "media": {
+    "thumb": "/img/projects/iris/thumb.webp",
+    "hero": "/img/projects/iris/hero.webp"
+  },
+  "published": true,
+  "order": 200,
+  "meta": {
+    "lastVerified": "2026-10-22",
+    "sources": [
+      "https://subishi.com/iris-luxury-homes/"
+    ],
+    "todo": [
+      "completion year"
+    ]
+  }
+}

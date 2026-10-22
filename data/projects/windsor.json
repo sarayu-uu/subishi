@@ -1,0 +1,52 @@
+{
+  "id": "windsor",
+  "name": "Windsor",
+  "tagline": "53 large villas in Mokila",
+  "status": "delivered",
+  "type": "villa",
+  "zone": "west",
+  "location": {
+    "lat": 17.423821,
+    "lng": 78.207033,
+    "locality": "Mokila",
+    "precision": "exact"
+  },
+  "config": [
+    "5 BHK"
+  ],
+  "sizes": {
+    "builtUpSft": [
+      4176,
+      4341
+    ],
+    "plotSqYd": [
+      400
+    ]
+  },
+  "scale": {
+    "units": 53,
+    "unitLabel": "villas",
+    "acres": 8
+  },
+  "approvals": {},
+  "nearby": [],
+  "highlights": [],
+  "links": {
+    "website": "https://subishi.com/windsor-luxury-homes/"
+  },
+  "media": {
+    "thumb": "/img/projects/windsor/thumb.webp",
+    "hero": "/img/projects/windsor/hero.webp"
+  },
+  "published": true,
+  "order": 200,
+  "meta": {
+    "lastVerified": "2026-10-22",
+    "sources": [
+      "https://subishi.com/windsor-luxury-homes/"
+    ],
+    "todo": [
+      "completion year"
+    ]
+  }
+}

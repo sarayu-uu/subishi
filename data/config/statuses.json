@@ -1,0 +1,38 @@
+[
+  {
+    "id": "ready",
+    "label": "Move in now",
+    "short": "Move in now",
+    "color": "#3E7D5A",
+    "order": 1,
+    "visibleByDefault": true,
+    "pinStyle": "solid"
+  },
+  {
+    "id": "under-construction",
+    "label": "Being built",
+    "short": "Being built",
+    "color": "#C9893B",
+    "order": 2,
+    "visibleByDefault": true,
+    "pinStyle": "solid"
+  },
+  {
+    "id": "upcoming",
+    "label": "Coming soon",
+    "short": "Coming soon",
+    "color": "#5A68AE",
+    "order": 3,
+    "visibleByDefault": true,
+    "pinStyle": "outline"
+  },
+  {
+    "id": "delivered",
+    "label": "Built by Subishi",
+    "short": "Built by Subishi",
+    "color": "#A39A8E",
+    "order": 4,
+    "visibleByDefault": true,
+    "pinStyle": "muted"
+  }
+]

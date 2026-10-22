@@ -1,0 +1,42 @@
+{
+  "id": "nirvana",
+  "name": "Nirvana",
+  "tagline": "New villa community · details coming soon",
+  "status": "upcoming",
+  "type": "villa",
+  "zone": "south",
+  "location": {
+    "lat": 17.13709,
+    "lng": 78.4346,
+    "locality": "Maheshwaram",
+    "precision": "area"
+  },
+  "config": [],
+  "sizes": {},
+  "scale": {},
+  "approvals": {},
+  "nearby": [],
+  "highlights": [
+    "Luxury villas in Maheshwaram",
+    "Watch the reveal on YouTube"
+  ],
+  "links": {
+    "video": "https://www.youtube.com/watch?v=2UwlTKNMBb0"
+  },
+  "media": {
+    "thumb": "/img/projects/nirvana/thumb.webp",
+    "hero": "/img/projects/nirvana/hero.webp"
+  },
+  "published": true,
+  "order": 11,
+  "meta": {
+    "lastVerified": "2026-10-22",
+    "sources": [
+      "https://www.youtube.com/watch?v=2UwlTKNMBb0"
+    ],
+    "todo": [
+      "placeholder card: only the YouTube link is real",
+      "exact pin location"
+    ]
+  }
+}

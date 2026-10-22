@@ -1,0 +1,17 @@
+[
+  {
+    "id": "villa",
+    "label": "Villas",
+    "icon": "villa"
+  },
+  {
+    "id": "apartment",
+    "label": "Apartments",
+    "icon": "building"
+  },
+  {
+    "id": "mixed",
+    "label": "Homes + commercial",
+    "icon": "building"
+  }
+]

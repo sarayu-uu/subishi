@@ -1,0 +1,54 @@
+{
+  "id": "bliss",
+  "name": "Bliss",
+  "tagline": "131 villas, 14 acres",
+  "status": "delivered",
+  "type": "villa",
+  "zone": "west",
+  "location": {
+    "lat": 17.436307,
+    "lng": 78.18674,
+    "locality": "Mokila",
+    "precision": "exact"
+  },
+  "config": [
+    "3 BHK"
+  ],
+  "sizes": {
+    "builtUpSft": [
+      2550
+    ],
+    "plotSqYd": [
+      300
+    ]
+  },
+  "scale": {
+    "units": 131,
+    "unitLabel": "villas",
+    "acres": 14
+  },
+  "approvals": {
+    "rera": "P02400001647"
+  },
+  "nearby": [],
+  "highlights": [],
+  "links": {
+    "website": "https://subishi.com/bliss-luxury-homes/",
+    "video": "https://www.youtube.com/watch?v=ImQ3qCwi-2Q"
+  },
+  "media": {
+    "thumb": "/img/projects/bliss/thumb.webp",
+    "hero": "/img/projects/bliss/hero.webp"
+  },
+  "published": true,
+  "order": 200,
+  "meta": {
+    "lastVerified": "2026-10-22",
+    "sources": [
+      "https://subishi.com/bliss-luxury-homes/"
+    ],
+    "todo": [
+      "completion year"
+    ]
+  }
+}

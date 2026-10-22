@@ -1,0 +1,51 @@
+{
+  "id": "gowthami",
+  "name": "Gowthami",
+  "tagline": "123 flats and a shopping mall",
+  "status": "delivered",
+  "type": "mixed",
+  "zone": "north",
+  "location": {
+    "lat": 17.528649,
+    "lng": 78.484544,
+    "locality": "Kompally",
+    "precision": "exact"
+  },
+  "config": [
+    "3 BHK"
+  ],
+  "sizes": {
+    "builtUpSft": [
+      1745,
+      3170
+    ]
+  },
+  "scale": {
+    "units": 123,
+    "unitLabel": "flats",
+    "acres": 2.375
+  },
+  "approvals": {},
+  "nearby": [],
+  "highlights": [],
+  "links": {
+    "website": "https://subishi.com/gowthami-residential/",
+    "websiteAlt": "https://subishi.com/gowthami-commercial/"
+  },
+  "media": {
+    "thumb": "/img/projects/gowthami/thumb.webp",
+    "hero": "/img/projects/gowthami/hero.webp"
+  },
+  "published": true,
+  "order": 200,
+  "meta": {
+    "lastVerified": "2026-10-22",
+    "sources": [
+      "https://subishi.com/gowthami-residential/"
+    ],
+    "todo": [
+      "confirm locality (Kompally from a listing site)",
+      "completion year"
+    ]
+  }
+}

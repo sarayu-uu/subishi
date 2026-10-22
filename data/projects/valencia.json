@@ -1,0 +1,72 @@
+{
+  "id": "valencia",
+  "name": "The Valencia",
+  "tagline": "One home per floor in Banjara Hills",
+  "status": "ready",
+  "type": "apartment",
+  "zone": "central",
+  "location": {
+    "lat": 17.406848,
+    "lng": 78.437174,
+    "locality": "Banjara Hills",
+    "precision": "exact"
+  },
+  "config": [
+    "3 BHK",
+    "4 BHK"
+  ],
+  "sizes": {
+    "builtUpSft": [
+      2400,
+      4300
+    ]
+  },
+  "scale": {
+    "units": 14,
+    "unitLabel": "towers",
+    "acres": 2,
+    "floors": 8
+  },
+  "price": {
+    "from": 34200000,
+    "to": 45000000,
+    "currency": "INR",
+    "label": "Starts from ₹3.42 Cr",
+    "range": "₹3.42 Cr – ₹4.5 Cr",
+    "source": {
+      "name": "RoofandFloor",
+      "url": "https://www.roofandfloor.com/hyderabad/project/subishi-valencia-in-banjara-hills/1011",
+      "asOf": "2026-10-22"
+    },
+    "note": "Indicative listing price; confirm with Subishi"
+  },
+  "approvals": {},
+  "nearby": [
+    "hussain-sagar",
+    "hitec-city"
+  ],
+  "highlights": [
+    "One flat per floor",
+    "15,000 sft clubhouse",
+    "Rooftop pool"
+  ],
+  "links": {
+    "website": "https://subishi.com/the-valencia/"
+  },
+  "media": {
+    "thumb": "/img/projects/valencia/thumb.webp",
+    "hero": "/img/projects/valencia/hero.webp"
+  },
+  "published": true,
+  "order": 10,
+  "meta": {
+    "lastVerified": "2026-10-22",
+    "sources": [
+      "https://subishi.com/the-valencia/",
+      "RoofandFloor: Ready to Occupy"
+    ],
+    "todo": [
+      "RERA number not on site"
+    ]
+  }
+}

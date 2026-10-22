@@ -1,0 +1,76 @@
+{
+  "id": "nest",
+  "name": "Nest Residences",
+  "tagline": "Near Kandlakoya IT hub on NH 44",
+  "status": "under-construction",
+  "type": "apartment",
+  "zone": "north",
+  "location": {
+    "lat": 17.593179,
+    "lng": 78.491051,
+    "locality": "Kandlakoya",
+    "precision": "exact"
+  },
+  "config": [
+    "2 BHK",
+    "3 BHK"
+  ],
+  "sizes": {
+    "builtUpSft": [
+      1075,
+      2710
+    ]
+  },
+  "scale": {
+    "units": 164,
+    "unitLabel": "flats",
+    "acres": 2,
+    "floors": 9
+  },
+  "price": {
+    "from": 4837000,
+    "to": 12100000,
+    "currency": "INR",
+    "label": "Starts from ₹48.37 L",
+    "range": "₹48.37 L – ₹1.21 Cr",
+    "source": {
+      "name": "GharPe",
+      "url": "https://gharpe.com/hyderabad/subishi-nest-residences",
+      "asOf": "2026-10-22"
+    },
+    "note": "Indicative listing price; confirm with Subishi"
+  },
+  "approvals": {
+    "rera": "P02200005398",
+    "authority": "HMDA"
+  },
+  "nearby": [
+    "orr-6",
+    "neeraj-school"
+  ],
+  "highlights": [
+    "Rooftop swimming pool",
+    "Opp. Neeraj International School",
+    "Limited flats"
+  ],
+  "links": {
+    "website": "https://subishi.com/nest-residences/",
+    "brochure": "https://subishi.com/wp-content/uploads/2025/07/Subishi-Nest-Brochure.pdf",
+    "facebook": "https://www.facebook.com/subishihomes/"
+  },
+  "media": {
+    "thumb": "/img/projects/nest/thumb.webp",
+    "hero": "/img/projects/nest/hero.webp"
+  },
+  "published": true,
+  "order": 7,
+  "meta": {
+    "lastVerified": "2026-10-22",
+    "sources": [
+      "https://subishi.com/nest-residences/"
+    ],
+    "todo": [
+      "status + possession date"
+    ]
+  }
+}

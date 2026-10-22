@@ -1,0 +1,39 @@
+{
+  "id": "silver-oaks",
+  "name": "Silver Oaks",
+  "tagline": "Apartments in Miyapur",
+  "status": "delivered",
+  "type": "apartment",
+  "zone": "west",
+  "location": {
+    "lat": 17.50713,
+    "lng": 78.355084,
+    "locality": "Miyapur",
+    "precision": "exact"
+  },
+  "config": [],
+  "sizes": {},
+  "scale": {},
+  "approvals": {},
+  "nearby": [],
+  "highlights": [],
+  "links": {
+    "website": "https://subishi.com/silver-oaks/"
+  },
+  "media": {
+    "thumb": "/img/projects/silver-oaks/thumb.webp",
+    "hero": "/img/projects/silver-oaks/hero.webp"
+  },
+  "published": true,
+  "order": 200,
+  "meta": {
+    "lastVerified": "2026-10-22",
+    "sources": [
+      "https://subishi.com/silver-oaks/"
+    ],
+    "todo": [
+      "configuration, size, units",
+      "completion year"
+    ]
+  }
+}

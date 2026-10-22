@@ -1,0 +1,50 @@
+{
+  "id": "sapphire",
+  "name": "Sapphire",
+  "tagline": "95 flats among Mokila's villa communities",
+  "status": "delivered",
+  "type": "apartment",
+  "zone": "west",
+  "location": {
+    "lat": 17.430637,
+    "lng": 78.194449,
+    "locality": "Mokila",
+    "precision": "exact"
+  },
+  "config": [
+    "2 BHK",
+    "3 BHK"
+  ],
+  "sizes": {
+    "builtUpSft": [
+      1090,
+      1850
+    ]
+  },
+  "scale": {
+    "units": 95,
+    "unitLabel": "flats",
+    "acres": 1.7
+  },
+  "approvals": {},
+  "nearby": [],
+  "highlights": [],
+  "links": {
+    "website": "https://subishi.com/sapphire/"
+  },
+  "media": {
+    "thumb": "/img/projects/sapphire/thumb.webp",
+    "hero": "/img/projects/sapphire/hero.webp"
+  },
+  "published": true,
+  "order": 200,
+  "meta": {
+    "lastVerified": "2026-10-22",
+    "sources": [
+      "https://subishi.com/sapphire/"
+    ],
+    "todo": [
+      "completion year"
+    ]
+  }
+}

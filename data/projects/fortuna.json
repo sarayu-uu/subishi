@@ -1,0 +1,76 @@
+{
+  "id": "fortuna",
+  "name": "Fortuna Towers",
+  "tagline": "15-floor towers in the heart of Mokila",
+  "status": "ready",
+  "type": "apartment",
+  "zone": "west",
+  "location": {
+    "lat": 17.4290022,
+    "lng": 78.1970515,
+    "locality": "Mokila",
+    "precision": "exact"
+  },
+  "possession": "ready",
+  "config": [
+    "3 BHK",
+    "4 BHK"
+  ],
+  "sizes": {
+    "builtUpSft": [
+      2280,
+      2790
+    ]
+  },
+  "scale": {
+    "units": 217,
+    "unitLabel": "flats",
+    "acres": 2.5,
+    "floors": 15
+  },
+  "price": {
+    "from": 13800000,
+    "to": 17300000,
+    "currency": "INR",
+    "label": "Starts from ₹1.38 Cr",
+    "range": "₹1.38 Cr – ₹1.73 Cr",
+    "source": {
+      "name": "GharPe",
+      "url": "https://gharpe.com/hyderabad/subishi-fortuna-towers",
+      "asOf": "2026-10-22"
+    },
+    "note": "Indicative listing price; confirm with Subishi"
+  },
+  "approvals": {
+    "rera": "P02400002887",
+    "authority": "HMDA"
+  },
+  "nearby": [
+    "financial-district",
+    "kokapet",
+    "gachibowli"
+  ],
+  "highlights": [
+    "20,000 sft clubhouse",
+    "3 levels of parking",
+    "Last few flats"
+  ],
+  "links": {
+    "website": "https://subishi.com/fortuna-towers/",
+    "brochure": "https://subishi.com/wp-content/uploads/2025/06/Fortuna-Brochure-2025.pdf",
+    "maps": "https://maps.app.goo.gl/oqwsPyb9kNZvmoHb8"
+  },
+  "media": {
+    "thumb": "/img/projects/fortuna/thumb.webp",
+    "hero": "/img/projects/fortuna/hero.webp"
+  },
+  "published": true,
+  "order": 4,
+  "meta": {
+    "lastVerified": "2026-10-22",
+    "sources": [
+      "https://subishi.com/fortuna-towers/"
+    ],
+    "todo": []
+  }
+}

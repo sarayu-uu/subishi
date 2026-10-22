@@ -1,0 +1,75 @@
+{
+  "id": "spark",
+  "name": "Spark",
+  "tagline": "Shankarpally's first luxury high-rise",
+  "status": "under-construction",
+  "type": "apartment",
+  "zone": "west",
+  "location": {
+    "lat": 17.476042,
+    "lng": 78.132153,
+    "locality": "Shankarpally",
+    "precision": "exact"
+  },
+  "config": [
+    "2 BHK",
+    "3 BHK"
+  ],
+  "sizes": {
+    "builtUpSft": [
+      1020,
+      2175
+    ]
+  },
+  "scale": {
+    "units": 225,
+    "unitLabel": "flats",
+    "acres": 2.1,
+    "floors": 10
+  },
+  "price": {
+    "from": 6755000,
+    "to": 12400000,
+    "currency": "INR",
+    "label": "Starts from ₹67.55 L",
+    "range": "₹67.55 L – ₹1.24 Cr",
+    "source": {
+      "name": "Square Yards",
+      "url": "https://www.squareyards.com/hyderabad-residential-property/subishi-spark/236889/project",
+      "asOf": "2026-10-22"
+    },
+    "note": "Indicative listing price; confirm with Subishi"
+  },
+  "approvals": {
+    "rera": "P02400006606",
+    "authority": "HMDA"
+  },
+  "nearby": [
+    "indus-school",
+    "orr-2"
+  ],
+  "highlights": [
+    "20 min to Indus International School",
+    "Swimming pool + clubhouse",
+    "Limited flats"
+  ],
+  "links": {
+    "website": "https://subishi.com/subishi-spark/"
+  },
+  "media": {
+    "thumb": "/img/projects/spark/thumb.webp",
+    "hero": "/img/projects/spark/hero.webp"
+  },
+  "published": true,
+  "order": 8,
+  "meta": {
+    "lastVerified": "2026-10-22",
+    "sources": [
+      "https://subishi.com/subishi-spark/"
+    ],
+    "todo": [
+      "status + possession date",
+      "brochure"
+    ]
+  }
+}

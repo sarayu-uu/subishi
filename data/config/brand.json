@@ -1,0 +1,80 @@
+{
+  "name": "Subishi",
+  "logo": "/img/brand/subishi-logo.svg",
+  "colors": {
+    "brand": "#3B4C9A",
+    "ink": "#1C2230",
+    "inkMuted": "#5B6272",
+    "ivory": "#F5F1EA",
+    "stone": "#E4DDD1",
+    "water": "#D6E0E6",
+    "park": "#E3EADB",
+    "white": "#FFFFFF"
+  },
+  "fonts": {
+    "display": "Cormorant Garamond",
+    "body": "Inter"
+  },
+  "contact": {
+    "phone": "+918958885000",
+    "phoneDisplay": "+91 89 5888 5000",
+    "whatsapp": null,
+    "email": null,
+    "contactPage": "https://subishi.com/contact-us/"
+  },
+  "social": [
+    {
+      "id": "instagram-main",
+      "platform": "instagram",
+      "label": "@subishiofficial",
+      "url": "https://www.instagram.com/subishiofficial/",
+      "show": true
+    },
+    {
+      "id": "instagram-city",
+      "platform": "instagram",
+      "label": "@subishigroup",
+      "url": "https://www.instagram.com/subishigroup/",
+      "show": true
+    },
+    {
+      "id": "facebook-main",
+      "platform": "facebook",
+      "label": "Subishi",
+      "url": "https://www.facebook.com/subishiofficial",
+      "show": true
+    },
+    {
+      "id": "facebook-homes",
+      "platform": "facebook",
+      "label": "Subishi Homes",
+      "url": "https://www.facebook.com/subishihomes/",
+      "show": false
+    },
+    {
+      "id": "youtube-main",
+      "platform": "youtube",
+      "label": "Subishi",
+      "url": "https://www.youtube.com/@subishi",
+      "show": true
+    },
+    {
+      "id": "youtube-legacy",
+      "platform": "youtube",
+      "label": "Subishi Group (older videos)",
+      "url": "https://www.youtube.com/@subishigroup3779",
+      "show": false
+    }
+  ],
+  "cta": {
+    "primary": "call",
+    "secondary": "enquire",
+    "note": "WhatsApp button appears automatically once contact.whatsapp is set"
+  },
+  "decisions": [
+    "No price shown: card says 'Price on request' with Call / Enquire",
+    "Instagram @subishiofficial + YouTube @subishi for the brand; @subishigroup on Subishi City projects",
+    "Older YouTube channel and Subishi Homes Facebook hidden",
+    "Logo: traced to SVG in Phase 1 from the website PNG"
+  ]
+}

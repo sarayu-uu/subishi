@@ -1,0 +1,106 @@
+/* The whole theme. Change a colour here and it changes everywhere. Warm palette taken from Subishi's Breeze site.
+   Text colours are checked for 4.5:1 on cream; the plain status colours are for dots, rings and fills only. */
+:root {
+  --cream: #F6F0E6; --paper: #FFFCF7; --line: #E9E0D2;
+  --ink: #2A2620; --muted: #746A5F; /* #7A7064 nudged darker to pass 4.5:1 on cream */
+  --green: #1F4D3A; --green-soft: #E4EEE6;
+  --honey: #C9893B; --honey-text: #91632A; --honey-soft: #F6E9D4;
+  --leaf: #3E7D5A; --indigo: #5A68AE; --taupe: #A39A8E;
+  --logo: #3B4C9A; /* the logo only */
+  --shadow: 0 1px 2px rgba(42,38,32,.08), 0 6px 18px rgba(42,38,32,.12);
+  --shadow-soft: 0 1px 2px rgba(42,38,32,.05), 0 4px 16px rgba(42,38,32,.08);
+  --shadow-pin: 0 4px 12px rgba(42,38,32,.22);
+  --display: "Fraunces", Georgia, serif;
+  --ui: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --r-md: 14px; --r-lg: 22px;
+  --nav-h: 44px;
+  --spring: cubic-bezier(.34, 1.56, .64, 1);
+}
+body { font: 16px/1.5 var(--ui); color: var(--ink); background: var(--cream); -webkit-font-smoothing: antialiased; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+/* Fraunces: SOFT rounds the letterforms; opsz follows the font size automatically. */
+h1, h2, .title, .row b { font-variation-settings: "SOFT" 50; font-optical-sizing: auto; font-weight: 500; }
+
+#map { position: absolute; inset: 0; background: var(--cream); }
+
+/* Top bar: slim, frosted, floating. Tap targets stay 44 px even where the drawn shape is smaller. */
+.nav { position: absolute; z-index: 20; left: max(12px, env(safe-area-inset-left)); right: max(12px, env(safe-area-inset-right));
+  top: calc(env(safe-area-inset-top) + 10px); height: var(--nav-h); display: flex; align-items: center; justify-content: space-between;
+  padding-left: 14px; background: rgba(255,252,247,.92); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  border-radius: var(--r-md); box-shadow: var(--shadow-soft); opacity: 0; transition: opacity .4s; }
+.nav.on { opacity: 1; }
+.nav .slot { width: 110px; height: 18px; } /* the logo lands here (logo is ~6.1:1) */
+.nav .slot .logo, .nav .slot svg { display: block; width: 100%; height: 100%; }
+/* Search replaces the logo while it is open (the logo stays in its slot for the intro). 16 px text stops iOS zooming in. */
+.nav.searching .slot { display: none; }
+.nav .search { flex: 1; min-width: 0; height: 40px; border: 0; background: transparent; font: 16px var(--ui); color: var(--ink); outline: none; -webkit-appearance: none; appearance: none; }
+.nav .search::placeholder { color: var(--muted); }
+.nav .search::-webkit-search-cancel-button { display: none; }
+.ibtn { position: relative; width: 44px; height: 44px; display: grid; place-items: center; color: var(--ink); }
+.ibtn::before { content: ""; position: absolute; inset: 2px; border-radius: 12px; background: var(--green-soft); opacity: 0; transition: opacity .15s; }
+.ibtn:active::before { opacity: 1; }
+.ibtn svg { position: relative; width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+
+/* "What are you looking for?" bar, 8 px under the nav. Shows a summary of the choice once one is made. */
+.ask { position: absolute; z-index: 20; left: max(12px, env(safe-area-inset-left)); right: max(12px, env(safe-area-inset-right));
+  top: calc(env(safe-area-inset-top) + 10px + var(--nav-h) + 8px); height: 48px; display: flex; align-items: center;
+  background: rgba(255,252,247,.94); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-radius: 24px; box-shadow: var(--shadow-soft);
+  opacity: 0; transform: translateY(-8px); transition: opacity .4s, transform .4s; }
+.ask.on { opacity: 1; transform: none; }
+.ask-b { flex: 1; min-width: 0; height: 48px; display: flex; align-items: center; gap: 10px; padding: 0 4px 0 16px; text-align: left; color: var(--muted); transition: transform .12s; }
+.ask-b span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ask-b.set { color: var(--ink); font-weight: 600; }
+.ask-b svg { flex: none; width: 20px; height: 20px; fill: none; stroke: var(--green); stroke-width: 1.8; stroke-linecap: round; }
+.ask-x { flex: none; width: 44px; height: 44px; margin-right: 2px; display: grid; place-items: center; border-radius: 22px; }
+.ask-x svg { width: 16px; height: 16px; fill: none; stroke: var(--muted); stroke-width: 2; stroke-linecap: round; }
+.ask-b:active { transform: scale(.98); }
+
+/* Photo pins: a 48 px tap square centred on a round photo (the marker anchors on that centre). MapLibre positions it absolutely. */
+.pin, .cl { min-width: 48px; height: 48px; display: grid; place-items: center; }
+.pin .b { position: relative; width: 44px; height: 44px; transition: transform .5s var(--spring); }
+.pin .b > img, .pin .ph { display: block; width: 100%; height: 100%; box-sizing: border-box; border: 3px solid var(--paper); border-radius: 50%;
+  object-fit: cover; background: var(--line); box-shadow: var(--shadow-pin); }
+.pin .ph { display: grid; place-items: center; align-content: center; background: var(--taupe); color: #fff; }
+.pin .ph svg { width: 18px; height: 18px; fill: currentColor; }
+.pin .ph.soon { background: var(--indigo); gap: 0; }
+.pin .ph.soon svg { width: 14px; height: 14px; }
+.pin .ph.soon small { font-size: 9.5px; font-weight: 600; line-height: 1; margin-top: 1px; }
+.pin.nophoto .dot { display: none; } /* the stand-in already carries the status colour */
+.pin .dot { position: absolute; right: -1px; bottom: -1px; width: 12px; height: 12px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 2px #fff; }
+.pin.done .b { width: 34px; height: 34px; }
+.pin.done .b > img { filter: sepia(.35) saturate(.8); }
+.pin.done .dot { width: 10px; height: 10px; }
+.pin.sel .b { width: 56px; height: 56px; animation: pin-sel .22s var(--spring); }
+.pin.sel .b > img, .pin.sel .ph { box-shadow: 0 0 0 3px var(--green), var(--shadow-pin); filter: none; }
+@keyframes pin-sel { from { transform: scale(.8); } }
+/* Name tag under each pin from zoom 11 (the map adds .names), and always under the selected pin. */
+.pin .nm { display: none; position: absolute; top: calc(100% + 5px); left: 50%; transform: translateX(-50%); padding: 2px 8px; border-radius: 10px;
+  background: var(--paper); color: var(--ink); font-size: 11px; font-weight: 600; line-height: 1.4; white-space: nowrap; box-shadow: var(--shadow-soft); pointer-events: none; }
+.names .pin .nm, .pin.sel .nm { display: block; }
+.pin.sel .nm { background: var(--green); color: #fff; font-size: 12px; }
+
+/* Clusters: up to three overlapping photos, then "+N". */
+.cl { padding: 0 2px; }
+.cl .b { display: flex; align-items: center; transition: transform .5s var(--spring); }
+.cl .f { width: 30px; height: 30px; margin-left: -10px; border-radius: 50%; border: 2px solid var(--paper); overflow: hidden; background: var(--line); box-shadow: var(--shadow-pin); }
+.cl .f:first-child { margin-left: 0; }
+.cl .f img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.cl .f .ph { width: 100%; height: 100%; display: grid; place-items: center; background: var(--taupe); color: #fff; }
+.cl .f .ph.soon { background: var(--indigo); }
+.cl .f .ph svg { width: 13px; height: 13px; fill: currentColor; }
+.cl .f .ph small { display: none; }
+.cl .more { height: 30px; min-width: 30px; margin-left: 4px; padding: 0 8px; border-radius: 15px; display: grid; place-items: center;
+  background: var(--paper); color: var(--ink); font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; box-shadow: var(--shadow-pin); }
+.cl .cap { position: absolute; top: calc(100% + 4px); left: 50%; transform: translateX(-50%); padding: 3px 10px; border-radius: 12px;
+  background: var(--paper); color: var(--ink); font-size: 12px; font-weight: 600; white-space: nowrap; box-shadow: var(--shadow-soft); pointer-events: none; }
+
+.pin:active .b, .cl:active .b { transform: scale(.97); }
+@media (hover: hover) { .pin:hover .b, .cl:hover .b { transform: scale(1.05); } }
+.pin.pop .b, .cl.pop .b { transform: scale(0); }
+
+/* From 900 px the project list is a 392 px panel on the left; the bar and filters sit to its right. */
+@media (min-width: 900px) {
+  .nav, .ask { left: 424px; right: auto; width: min(520px, calc(100% - 440px)); }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }

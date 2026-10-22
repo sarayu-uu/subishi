@@ -1,0 +1,279 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subishi project",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "status",
+    "type",
+    "zone",
+    "location",
+    "links"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Must match the file name"
+    },
+    "name": {
+      "type": "string"
+    },
+    "tagline": {
+      "type": "string",
+      "maxLength": 60
+    },
+    "status": {
+      "enum": [
+        "ready",
+        "under-construction",
+        "upcoming",
+        "delivered"
+      ],
+      "description": "id from config/statuses.json"
+    },
+    "type": {
+      "enum": [
+        "villa",
+        "apartment",
+        "mixed"
+      ],
+      "description": "id from config/types.json"
+    },
+    "zone": {
+      "enum": [
+        "west",
+        "north",
+        "south",
+        "central",
+        "kamareddy"
+      ],
+      "description": "id from config/zones.json"
+    },
+    "location": {
+      "type": "object",
+      "required": [
+        "lat",
+        "lng",
+        "locality",
+        "precision"
+      ],
+      "properties": {
+        "lat": {
+          "type": "number",
+          "minimum": 15.8,
+          "maximum": 19.95
+        },
+        "lng": {
+          "type": "number",
+          "minimum": 77.2,
+          "maximum": 81.4
+        },
+        "locality": {
+          "type": "string"
+        },
+        "precision": {
+          "enum": [
+            "exact",
+            "locality",
+            "area"
+          ]
+        }
+      }
+    },
+    "possession": {
+      "type": "string",
+      "pattern": "^(ready|\\d{4}-\\d{2})$"
+    },
+    "config": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sizes": {
+      "type": "object",
+      "properties": {
+        "builtUpSft": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 2
+        },
+        "plotSqYd": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 2
+        }
+      }
+    },
+    "scale": {
+      "type": "object",
+      "properties": {
+        "units": {
+          "type": "number"
+        },
+        "unitLabel": {
+          "type": "string"
+        },
+        "acres": {
+          "type": "number"
+        },
+        "floors": {
+          "type": "number"
+        }
+      }
+    },
+    "price": {
+      "type": "object",
+      "description": "omit for delivered projects",
+      "properties": {
+        "from": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "rupees, lowest listed"
+        },
+        "to": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "currency": {
+          "const": "INR"
+        },
+        "label": {
+          "type": "string",
+          "description": "shown on the card, e.g. 'Starts from ₹67.55 L'"
+        },
+        "range": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "source": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "asOf": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "approvals": {
+      "type": "object",
+      "properties": {
+        "rera": {
+          "type": "string"
+        },
+        "authority": {
+          "enum": [
+            "HMDA",
+            "DTCP",
+            "GHMC"
+          ]
+        }
+      }
+    },
+    "nearby": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 3,
+      "description": "ids from config/landmarks.json"
+    },
+    "highlights": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 40
+      },
+      "maxItems": 3
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "website": {
+          "type": "string",
+          "format": "uri"
+        },
+        "websiteAlt": {
+          "type": "string",
+          "format": "uri"
+        },
+        "video": {
+          "type": "string",
+          "format": "uri"
+        },
+        "videoIntro": {
+          "type": "string",
+          "format": "uri"
+        },
+        "brochure": {
+          "type": "string",
+          "format": "uri"
+        },
+        "maps": {
+          "type": "string",
+          "format": "uri"
+        },
+        "instagram": {
+          "type": "string",
+          "format": "uri"
+        },
+        "facebook": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "media": {
+      "type": "object",
+      "properties": {
+        "thumb": {
+          "type": "string"
+        },
+        "hero": {
+          "type": "string"
+        }
+      }
+    },
+    "published": {
+      "type": "boolean",
+      "description": "false = kept in data but not shown on the map"
+    },
+    "order": {
+      "type": "number"
+    },
+    "meta": {
+      "type": "object",
+      "description": "not shown on the page",
+      "properties": {
+        "lastVerified": {
+          "type": "string"
+        },
+        "sources": {
+          "type": "array"
+        },
+        "todo": {
+          "type": "array"
+        }
+      }
+    }
+  }
+}

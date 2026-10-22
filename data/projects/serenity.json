@@ -1,0 +1,77 @@
+{
+  "id": "serenity",
+  "name": "Serenity Homes",
+  "tagline": "272 regal villas, 53 acres",
+  "status": "under-construction",
+  "type": "villa",
+  "zone": "south",
+  "location": {
+    "lat": 17.146883,
+    "lng": 78.329478,
+    "locality": "Toopra Khurd, Maheshwaram",
+    "precision": "exact"
+  },
+  "possession": "2028-12",
+  "config": [
+    "4 BHK"
+  ],
+  "sizes": {
+    "builtUpSft": [
+      5826,
+      5892
+    ]
+  },
+  "scale": {
+    "units": 272,
+    "unitLabel": "villas",
+    "acres": 53
+  },
+  "price": {
+    "from": 49500000,
+    "to": 50100000,
+    "currency": "INR",
+    "label": "Starts from ₹4.95 Cr",
+    "range": "₹4.95 Cr – ₹5.01 Cr",
+    "source": {
+      "name": "Square Yards",
+      "url": "https://www.squareyards.com/hyderabad-residential-property/subishi-serenity-homes/338769/project",
+      "asOf": "2026-10-22"
+    },
+    "note": "Indicative listing price; confirm with Subishi"
+  },
+  "approvals": {
+    "rera": "P02400009573",
+    "authority": "HMDA"
+  },
+  "nearby": [
+    "orr-15",
+    "rgia",
+    "statue-of-equality"
+  ],
+  "highlights": [
+    "Keus home automation",
+    "4 private suites",
+    "Gated villa community"
+  ],
+  "links": {
+    "website": "https://subishiserenity.com/",
+    "video": "https://www.youtube.com/watch?v=YiFIIsSTySM",
+    "videoIntro": "https://www.youtube.com/watch?v=ijwDWJAMAGs",
+    "instagram": "https://www.instagram.com/subishigroup/"
+  },
+  "media": {
+    "thumb": "/img/projects/serenity/thumb.webp",
+    "hero": "/img/projects/serenity/hero.webp"
+  },
+  "published": true,
+  "order": 1,
+  "meta": {
+    "lastVerified": "2026-10-22",
+    "sources": [
+      "https://subishiserenity.com/"
+    ],
+    "todo": [
+      "possession date (site FAQ says ~Dec 2028; a listing site says Apr 2030)"
+    ]
+  }
+}

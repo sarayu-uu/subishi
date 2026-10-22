@@ -1,0 +1,71 @@
+{
+  "id": "breeze",
+  "name": "Breeze",
+  "tagline": "South Hyderabad's largest villa community",
+  "status": "under-construction",
+  "type": "villa",
+  "zone": "south",
+  "location": {
+    "lat": 17.115837,
+    "lng": 78.369569,
+    "locality": "Maheshwaram",
+    "precision": "exact"
+  },
+  "config": [
+    "4 BHK"
+  ],
+  "sizes": {
+    "builtUpSft": [
+      4500
+    ],
+    "plotSqYd": [
+      400,
+      800
+    ]
+  },
+  "scale": {
+    "units": 528,
+    "unitLabel": "villas",
+    "acres": 90
+  },
+  "price": {
+    "from": null,
+    "to": null,
+    "note": "Price on request"
+  },
+  "approvals": {
+    "rera": "P02400011055",
+    "authority": "HMDA"
+  },
+  "nearby": [
+    "orr-15",
+    "rgia",
+    "statue-of-equality"
+  ],
+  "highlights": [
+    "60,000 sft clubhouse",
+    "800 sq yd plot zone",
+    "6 parks"
+  ],
+  "links": {
+    "website": "https://www.subishibreeze.com/",
+    "video": "https://www.youtube.com/watch?v=FGFWnz5tahs",
+    "videoIntro": "https://www.youtube.com/watch?v=csKJcnh3u58",
+    "instagram": "https://www.instagram.com/subishigroup/"
+  },
+  "media": {
+    "thumb": "/img/projects/breeze/thumb.webp",
+    "hero": "/img/projects/breeze/hero.webp"
+  },
+  "published": true,
+  "order": 2,
+  "meta": {
+    "lastVerified": "2026-10-22",
+    "sources": [
+      "https://www.subishibreeze.com/"
+    ],
+    "todo": [
+      "possession date"
+    ]
+  }
+}

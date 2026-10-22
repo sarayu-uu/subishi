@@ -1,0 +1,77 @@
+{
+  "id": "forest-edge",
+  "name": "Forest Edge",
+  "tagline": "215 villas beside forest land",
+  "status": "ready",
+  "type": "villa",
+  "zone": "north",
+  "location": {
+    "lat": 17.60792,
+    "lng": 78.50999,
+    "locality": "Pudur, near Kompally",
+    "precision": "exact"
+  },
+  "possession": "ready",
+  "config": [
+    "4 BHK"
+  ],
+  "sizes": {
+    "builtUpSft": [
+      3425,
+      4620
+    ],
+    "plotSqYd": [
+      580
+    ]
+  },
+  "scale": {
+    "units": 215,
+    "unitLabel": "villas",
+    "acres": 43
+  },
+  "price": {
+    "from": 42000000,
+    "to": 55400000,
+    "currency": "INR",
+    "label": "Starts from ₹4.2 Cr",
+    "range": "₹4.2 Cr – ₹5.54 Cr",
+    "source": {
+      "name": "Square Yards",
+      "url": "https://www.squareyards.com/hyderabad-residential-property/subishi-forest-edge-luxury-homes/224850/project",
+      "asOf": "2026-10-22"
+    },
+    "note": "Indicative listing price; confirm with Subishi"
+  },
+  "approvals": {
+    "rera": "P02200003514",
+    "authority": "HMDA"
+  },
+  "nearby": [
+    "orr-6"
+  ],
+  "highlights": [
+    "Next to forest land",
+    "Near ORR Exit 6",
+    "Last few villas"
+  ],
+  "links": {
+    "website": "https://subishi.com/forest-edge-luxury-villas/",
+    "brochure": "https://subishi.com/wp-content/uploads/2024/10/Forest-Edge-Brochure-15-x-10.pdf"
+  },
+  "media": {
+    "thumb": "/img/projects/forest-edge/thumb.webp",
+    "hero": "/img/projects/forest-edge/hero.webp"
+  },
+  "published": true,
+  "order": 5,
+  "meta": {
+    "lastVerified": "2026-10-22",
+    "sources": [
+      "https://subishi.com/forest-edge-luxury-villas/",
+      "OpenStreetMap: Subishi Forest Edge Villas"
+    ],
+    "todo": [
+      "confirm ready-to-move (website says 'last few villas')"
+    ]
+  }
+}

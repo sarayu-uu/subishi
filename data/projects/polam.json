@@ -1,0 +1,73 @@
+{
+  "id": "polam",
+  "name": "Polam",
+  "tagline": "Luxury apartments in green Kompally",
+  "status": "under-construction",
+  "type": "apartment",
+  "zone": "north",
+  "location": {
+    "lat": 17.511314,
+    "lng": 78.480899,
+    "locality": "Kompally",
+    "precision": "exact"
+  },
+  "config": [
+    "3 BHK",
+    "4 BHK"
+  ],
+  "sizes": {
+    "builtUpSft": [
+      1780,
+      3400
+    ]
+  },
+  "scale": {
+    "units": 256,
+    "unitLabel": "flats",
+    "acres": 3.6,
+    "floors": 12
+  },
+  "price": {
+    "from": 13300000,
+    "to": 25500000,
+    "currency": "INR",
+    "label": "Starts from ₹1.33 Cr",
+    "range": "₹1.33 Cr – ₹2.55 Cr",
+    "source": {
+      "name": "Square Yards",
+      "url": "https://www.squareyards.com/hyderabad-residential-property/subishis-polam-luxury-apartments/157539/project",
+      "asOf": "2026-10-22"
+    },
+    "note": "Indicative listing price; confirm with Subishi"
+  },
+  "approvals": {},
+  "nearby": [
+    "orr-6"
+  ],
+  "highlights": [
+    "Terrace swimming pool",
+    "Squash court",
+    "Limited flats"
+  ],
+  "links": {
+    "website": "https://subishi.com/polam-luxury-flats/",
+    "brochure": "https://subishi.com/wp-content/uploads/2024/10/Polam-Brochure-12-x-14.pdf"
+  },
+  "media": {
+    "thumb": "/img/projects/polam/thumb.webp",
+    "hero": "/img/projects/polam/hero.webp"
+  },
+  "published": true,
+  "order": 6,
+  "meta": {
+    "lastVerified": "2026-10-22",
+    "sources": [
+      "https://subishi.com/polam-luxury-flats/"
+    ],
+    "todo": [
+      "RERA number",
+      "possession date (a listing site says ~Jun 2027)",
+      "approval authority (site says 'Plans by GHMC', homepage says HMDA)"
+    ]
+  }
+}

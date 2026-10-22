@@ -1,0 +1,61 @@
+{
+  "id": "kamareddy-castles",
+  "name": "Kamareddy Castles",
+  "tagline": "The first luxury villas in Kamareddy",
+  "status": "under-construction",
+  "type": "villa",
+  "zone": "kamareddy",
+  "location": {
+    "lat": 18.3350672,
+    "lng": 78.3083156,
+    "locality": "Kamareddy",
+    "precision": "exact"
+  },
+  "config": [
+    "4 BHK"
+  ],
+  "sizes": {
+    "builtUpSft": [
+      2962,
+      2987
+    ]
+  },
+  "scale": {
+    "units": 83,
+    "unitLabel": "villas",
+    "acres": 7.5
+  },
+  "price": {
+    "from": null,
+    "to": null,
+    "note": "Price on request"
+  },
+  "approvals": {
+    "rera": "P00200009600",
+    "authority": "DTCP"
+  },
+  "nearby": [],
+  "highlights": [
+    "Swimming pool + clubhouse",
+    "Pickleball + cricket nets"
+  ],
+  "links": {
+    "website": "https://subishi.com/kamareddy-castles/",
+    "maps": "https://maps.app.goo.gl/7uPbzkhgumxZMkXCA"
+  },
+  "media": {
+    "thumb": "/img/projects/kamareddy-castles/thumb.webp",
+    "hero": "/img/projects/kamareddy-castles/hero.webp"
+  },
+  "published": true,
+  "order": 9,
+  "meta": {
+    "lastVerified": "2026-10-22",
+    "sources": [
+      "https://subishi.com/kamareddy-castles/"
+    ],
+    "todo": [
+      "status + possession date"
+    ]
+  }
+}
