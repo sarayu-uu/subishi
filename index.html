@@ -4,29 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#F6F0E6" />
-    <title>Subishi Projects Map</title>
-    <meta name="description" content="Every Subishi villa and apartment community across Telangana on one map." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <title>Subishi Homes Map</title>
+    <meta name="description" content="Every Subishi villa and apartment community across Telangana on one map. A concept map, not an official Subishi website." />
     <!-- Link previews. scripts/make-share-pages.ts makes these absolute and writes one page per project. -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Subishi" />
     <meta property="og:title" content="Homes by Subishi" />
-    <meta property="og:description" content="Every Subishi villa and apartment community across Telangana on one map." />
+    <meta property="og:description" content="Every Subishi villa and apartment community across Telangana on one map. A concept map, not an official Subishi website." />
     <meta property="og:image" content="https://subishi.vercel.app/og/default.jpg" />
     <meta property="og:url" content="https://subishi.vercel.app/" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin />
-    <link rel="prefetch" href="/data/index.json" />
+    <link rel="preload" href="/data/index.json" as="fetch" crossorigin />
     <style>
       /* Critical CSS: only what the splash needs before any script loads */
       html,body,#app{height:100%;margin:0;background:#F6F0E6;overflow:hidden}
       #splash{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:#F6F0E6;transition:background-color .7s ease}
-      #splash .logo{width:min(60vw,280px);transform-origin:0 0;will-change:transform}
-      #splash .logo svg{display:block;width:100%;height:auto}
-      @media (prefers-reduced-motion:no-preference){#splash .logo{animation:in .5s ease-out both}@keyframes in{from{opacity:0;transform:scale(.96)}}}
+      #splash .logo{width:min(72vw,320px);transform-origin:0 0;will-change:transform}
+      #splash .logo img{display:block;width:100%;height:auto}
+      /* No fade-in on the logo: visible from the first frame, so it is the page's first meaningful paint. */
+      /* If the app's code hasn't arrived 2.5 s after the splash appeared (slow connections), the splash turns into the
+         app's shape on its own: logo in a nav bar at the top, "Loading homes…" where the sheet will be. */
+      #splash.wait .logo{position:fixed;z-index:1;top:calc(env(safe-area-inset-top) + 23px);left:calc(max(12px,env(safe-area-inset-left)) + 14px);width:110px}
+      #splash.wait::before{content:"";position:fixed;left:max(12px,env(safe-area-inset-left));right:max(12px,env(safe-area-inset-right));top:calc(env(safe-area-inset-top) + 10px);height:44px;border-radius:14px;background:#FFFCF7;box-shadow:0 4px 16px rgba(42,38,32,.08)}
+      #splash.wait::after{content:"Loading homes…";position:fixed;left:0;right:0;bottom:0;height:164px;box-sizing:border-box;padding:40px 18px 0;border-radius:22px 22px 0 0;background:#FFFCF7;box-shadow:0 -2px 24px rgba(42,38,32,.14);font:16px/1.5 system-ui,sans-serif;color:#6E655A}
     </style>
   </head>
   <body>
     <div id="splash" aria-hidden="true"><div class="logo"><!--LOGO--></div></div>
+    <!-- Only if the app hasn't started by then (it marks the splash with data-app and keeps its own 2.5 s limit). -->
+    <script>setTimeout(function () { var s = document.getElementById('splash'); if (s && !s.dataset.app) s.classList.add('wait'); }, 2400);</script>
     <div id="app"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

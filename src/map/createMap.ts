@@ -20,6 +20,9 @@ export function createMap(container: HTMLElement): Promise<Map> {
     touchPitch: false,
     attributionControl: { compact: true },
     fadeDuration: 150,
+    // Phones above 2× gain little visible sharpness from a bigger canvas but pay for it in rendering time.
+    pixelRatio: Math.min(devicePixelRatio, 2),
+    renderWorldCopies: false,
   });
   map.touchZoomRotate.disableRotation();
   return new Promise((resolve, reject) => {

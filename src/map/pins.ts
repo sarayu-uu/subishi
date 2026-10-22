@@ -82,6 +82,7 @@ export function createPins(map: Map, projects: Project[], statuses: Status[], on
         const cls = `pin${p.status === 'delivered' ? ' done' : ''}${p.media.pin ? '' : ' nophoto'}`;
         node = el(`<span class="b">${face(p)}<i class="dot" style="--c:${color[p.status]}"></i><span class="nm" aria-hidden="true">${esc(p.name)}</span></span>`,
           cls, `${p.name}, ${label[p.status]}`, () => onSelect(p.id));
+        node.dataset.id = p.id;
       }
       // The button is centred on its picture, so 'center' puts the picture's middle on the location.
       const m = new MLMarker({ element: node, anchor: 'center' }).setLngLat(c).addTo(map);
@@ -89,6 +90,18 @@ export function createPins(map: Map, projects: Project[], statuses: Status[], on
       markers.set(key, m);
     }
     for (const [k, m] of markers) if (!keep.has(k)) { m.remove(); markers.delete(k); }
+    tabOrder();
+  }
+
+  /** Markers are buttons; keep their DOM order (which is the Tab order) top to bottom, then left to right. */
+  function tabOrder() {
+    const list = [...markers.values()].map((m) => ({ el: m.getElement(), pt: map.project(m.getLngLat()) }))
+      .sort((a, b) => Math.round(a.pt.y / 24) - Math.round(b.pt.y / 24) || a.pt.x - b.pt.x);
+    const parent = list[0]?.el.parentElement;
+    if (!parent) return;
+    const now = [...parent.children].filter((c) => list.some((x) => x.el === c));
+    // Only move nodes when the order is actually wrong: moving a focused button would drop its focus.
+    if (now.some((c, i) => c !== list[i].el)) list.forEach(({ el }) => parent.appendChild(el));
   }
 
   map.on('moveend', render);

@@ -13,4 +13,4 @@ export type Project = {
 export type Zone = { id: string; label: string; order?: number; view?: { center: [number, number]; zoom: number }; outsideCity?: boolean; distanceNote?: string };
 export type Emi = { downPaymentPct: number; ratePct: number; years: number; note?: string };
 export type Brand = { contact?: { phone?: string; phoneDisplay?: string }; emi?: Emi };
-export type Index = { statuses: Status[]; zones: Zone[]; projects: Project[]; brand: Brand };
+export type Index = { generated: string; statuses: Status[]; zones: Zone[]; projects: Project[]; brand: Brand };

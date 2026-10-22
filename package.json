@@ -11,7 +11,8 @@
     "links": "tsx scripts/check-links.ts",
     "style": "tsx scripts/make-style.ts",
     "pins": "tsx scripts/make-pins.ts",
-    "fonts": "python scripts/make-fonts.py"
+    "fonts": "python scripts/make-fonts.py",
+    "icons": "python scripts/make-icons.py && tsx scripts/make-icons.ts"
   },
   "dependencies": {
     "@fontsource/figtree": "5.3.0",

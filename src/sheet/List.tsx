@@ -7,7 +7,8 @@ import { Briefcase, Dome, Plane, Road, Tree } from './icons';
 type Props = {
   projects: Project[]; total: number; statuses: Status[]; zones: Zone[]; searching: boolean; filtered: boolean;
   /** Photos may load (the sheet is open past peek). */ photos: boolean;
-  onSelect: (p: Project, keyboard: boolean) => void; onZone: (z: Zone) => void; onReset: () => void;
+  /** When the data was built, for "Last updated". */ updated: string; onExpand: () => void;
+  onSelect: (p: Project) => void; onZone: (z: Zone) => void; onReset: () => void;
 };
 const ZONE_ICON: Record<string, () => JSX.Element> = { west: Briefcase, north: Tree, south: Plane, central: Dome, kamareddy: Road };
 
@@ -31,7 +32,8 @@ export function Thumb({ src, allowed }: { src?: string; allowed: boolean }) {
   );
 }
 
-export function List({ projects, total, statuses, zones, searching, filtered, photos, onSelect, onZone, onReset }: Props) {
+export function List({ projects, total, statuses, zones, searching, filtered, photos, updated, onExpand, onSelect, onZone, onReset }: Props) {
+  const [about, setAbout] = useState(false);
   const groups = [...statuses].sort((a, b) => a.order - b.order)
     .map((s) => ({ s, items: projects.filter((p) => p.status === s.id).sort((a, b) => a.order - b.order) }))
     .filter((g) => g.items.length);
@@ -43,7 +45,20 @@ export function List({ projects, total, statuses, zones, searching, filtered, ph
         <p>Homes by Subishi</p>
         <h2>{searching ? 'Search results' : 'Find a home for your family'}</h2>
         <p class="sub">{sub}</p>
+        <button class="about-i" type="button" aria-label="About this map" aria-expanded={about} aria-controls="about"
+          onClick={() => { if (!about) onExpand(); setAbout(!about); }}><i>i</i></button>
       </div>
+      {about && (
+        <div class="about" id="about">
+          <p>
+            A concept map of Subishi's projects, made by Sarayu. This isn't an official Subishi website. Prices are indicative
+            listings from public property sites; confirm with Subishi. Project details from subishi.com and Subishi's project sites.
+            Map © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>,
+            tiles by <a href="https://openfreemap.org" target="_blank" rel="noopener">OpenFreeMap</a>.
+            Last updated {new Date(updated).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}.
+          </p>
+        </div>
+      )}
       {!searching && (
         <div class="zones" role="group" aria-label="Areas">
           {[...zones].sort((a, b) => (a.order ?? 0) - (b.order ?? 0)).map((z) => {
@@ -62,7 +77,7 @@ export function List({ projects, total, statuses, zones, searching, filtered, ph
             {g.items.map((p) => {
               const [price, note] = rowPrice(p);
               return (
-                <button key={p.id} class="row" onClick={(e) => onSelect(p, e.detail === 0)}>
+                <button key={p.id} class="row" data-id={p.id} onClick={() => onSelect(p)}>
                   <Thumb src={p.media.thumb} allowed={photos} />
                   <span class="mid"><b>{p.name}</b><small>{[p.location.locality, oneLine(p)].filter(Boolean).join(' · ')}</small></span>
                   <span class="rt">{price}<em>{note}</em></span>

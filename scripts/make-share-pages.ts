@@ -51,7 +51,7 @@ async function ogImage(out: string, photo: string | null, title: string, sub: st
 }
 
 /** Swap the preview tags in a copy of index.html. */
-function page(t: { title: string; description: string; image: string; url: string }) {
+function page(t: { title: string; description: string; image: string; url: string; hero?: string }) {
   const set = (html: string, attr: 'name' | 'property', key: string, value: string) => {
     const tag = `<meta ${attr}="${key}" content="${esc(value)}" />`;
     const re = new RegExp(`<meta ${attr}="${key}"[^>]*>`);
@@ -68,11 +68,14 @@ function page(t: { title: string; description: string; image: string; url: strin
   html = set(html, 'property', 'og:image:height', String(H));
   html = set(html, 'property', 'og:url', t.url);
   html = set(html, 'name', 'twitter:card', 'summary_large_image');
+  // The card's photo is this page's main image: start fetching it while the app boots.
+  if (t.hero) html = html.replace('</head>', `    <link rel="preload" as="image" href="${t.hero}" fetchpriority="high" />
+  </head>`);
   return html;
 }
 
 await ogImage('dist/og/default.jpg', null, 'Homes by Subishi', 'Villas and apartments across Telangana');
-const home = page({ title: 'Homes by Subishi', description: 'Every Subishi villa and apartment community across Telangana on one map.', image: `${SITE}/og/default.jpg`, url: `${SITE}/` });
+const home = page({ title: 'Homes by Subishi', description: 'Every Subishi villa and apartment community across Telangana on one map. A concept map, not an official Subishi website.', image: `${SITE}/og/default.jpg`, url: `${SITE}/` });
 writeFileSync('dist/index.html', home);
 writeFileSync('dist/404.html', home);
 
@@ -88,6 +91,7 @@ for (const p of index.projects) {
     description: [line, p.tagline].filter(Boolean).join('. ') + '.',
     image: `${SITE}/og/${photo ? p.id : 'default'}.jpg`,
     url: `${SITE}/p/${p.id}`,
+    hero: p.media.hero,
   }));
   n++;
 }

@@ -2,7 +2,8 @@ import type { Map } from 'maplibre-gl';
 import { limitMap, revealTelangana } from './map/telangana';
 
 type Opts = {
-  map: Map | null; splash: HTMLElement; slot: HTMLElement;
+  /** null when the splash has already been put away (the app took over before the data or map were ready). */
+  map: Map | null; splash: HTMLElement | null; slot: HTMLElement;
   /** Skip the long version (the link already says what to show). */
   quick: boolean;
   /** Move the map to where the intro ends; `duration` 0 means jump. */
@@ -20,7 +21,15 @@ const FADE = 700, HOLD = 500, FLIGHT = 1800;
  * Shared links and repeat visits skip straight to their view; reduced motion cross-fades to the end view, no flight.
  */
 export async function runIntro(o: Opts, startedAt: number) {
-  const logo = o.splash.querySelector<HTMLElement>('.logo')!;
+  if (!o.splash) {
+    // Already past the splash: just bring the app in at its final view.
+    o.onNav();
+    if (o.map) { revealTelangana(o.map); o.land(o.map, 0); limitMap(o.map); }
+    o.onPins(); o.onUI();
+    return;
+  }
+  const splash = o.splash;
+  const logo = splash.querySelector<HTMLElement>('.logo')!;
   let skipped = false;
   let short = false;
   try { short = sessionStorage.getItem('intro-seen') === '1'; } catch { /* storage blocked: play the intro */ }
@@ -28,7 +37,7 @@ export async function runIntro(o: Opts, startedAt: number) {
   addEventListener('pointerdown', skip, { once: true, capture: true });
   addEventListener('wheel', skip, { once: true, capture: true });
   const seen = () => { try { sessionStorage.setItem('intro-seen', '1'); } catch { /* fine */ } };
-  const dock = () => { logo.style.transition = 'none'; logo.style.transform = ''; o.slot.appendChild(logo); o.splash.remove(); };
+  const dock = () => { logo.style.transition = 'none'; logo.style.transform = ''; o.slot.appendChild(logo); splash.remove(); };
 
   const end = () => {
     // Land the logo in the nav and hand over the map.
@@ -42,7 +51,7 @@ export async function runIntro(o: Opts, startedAt: number) {
     // Put the map in its final place behind the splash first, so the fade reveals it directly.
     if (o.map) { revealTelangana(o.map); o.land(o.map, 0); }
     await wait(short ? 300 : 0);
-    o.splash.style.transition = 'opacity .3s'; o.splash.style.opacity = '0';
+    splash.style.transition = 'opacity .3s'; splash.style.opacity = '0';
     await wait(300);
     return end();
   }
@@ -55,8 +64,8 @@ export async function runIntro(o: Opts, startedAt: number) {
   const a = logo.getBoundingClientRect(), b = o.slot.getBoundingClientRect();
   logo.style.transition = `transform ${FADE}ms cubic-bezier(.65,0,.35,1)`;
   logo.style.transform = `translate(${b.left - a.left}px, ${b.top - a.top}px) scale(${b.height / a.height})`;
-  o.splash.style.backgroundColor = 'transparent';
-  o.splash.style.pointerEvents = 'none';
+  splash.style.backgroundColor = 'transparent';
+  splash.style.pointerEvents = 'none';
   if (o.map) revealTelangana(o.map);
   setTimeout(o.onNav, FADE - 100);
   await wait(FADE); // the flight never starts before the splash has gone
@@ -78,4 +87,14 @@ export async function runIntro(o: Opts, startedAt: number) {
   await wait(400);
   o.onUI();
   seen();
+}
+
+/** Put the splash away now (no intro): the logo goes straight to the nav and the splash fades out. */
+export function dockSplash(slot: HTMLElement) {
+  const splash = document.getElementById('splash');
+  if (!splash) return;
+  const logo = splash.querySelector('.logo');
+  if (logo) slot.appendChild(logo);
+  splash.style.transition = 'opacity .3s'; splash.style.opacity = '0'; splash.style.pointerEvents = 'none';
+  setTimeout(() => splash.remove(), 300);
 }

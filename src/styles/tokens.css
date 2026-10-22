@@ -2,9 +2,9 @@
    Text colours are checked for 4.5:1 on cream; the plain status colours are for dots, rings and fills only. */
 :root {
   --cream: #F6F0E6; --paper: #FFFCF7; --line: #E9E0D2;
-  --ink: #2A2620; --muted: #746A5F; /* #7A7064 nudged darker to pass 4.5:1 on cream */
+  --ink: #2A2620; --muted: #6E655A; /* #7A7064 darkened: ≥ 4.5:1 on cream and on the honey tint */
   --green: #1F4D3A; --green-soft: #E4EEE6;
-  --honey: #C9893B; --honey-text: #91632A; --honey-soft: #F6E9D4;
+  --honey: #C9893B; --honey-text: #865A23; --honey-soft: #F6E9D4; /* honey-text: 5:1 on the tint, 5.9:1 on paper */
   --leaf: #3E7D5A; --indigo: #5A68AE; --taupe: #A39A8E;
   --logo: #3B4C9A; /* the logo only */
   --shadow: 0 1px 2px rgba(42,38,32,.08), 0 6px 18px rgba(42,38,32,.12);
@@ -30,7 +30,7 @@ h1, h2, .title, .row b { font-optical-sizing: auto; font-weight: 600; } /* Fraun
   border-radius: var(--r-md); box-shadow: var(--shadow-soft); opacity: 0; transition: opacity .4s; }
 .nav.on { opacity: 1; }
 .nav .slot { width: 110px; height: 18px; } /* the logo lands here (logo is ~6.1:1) */
-.nav .slot .logo, .nav .slot svg { display: block; width: 100%; height: 100%; }
+.nav .slot .logo, .nav .slot img { display: block; width: 100%; height: 100%; }
 /* Search replaces the logo while it is open (the logo stays in its slot for the intro). 16 px text stops iOS zooming in. */
 .nav.searching .slot { display: none; }
 .nav .search { flex: 1; min-width: 0; height: 40px; border: 0; background: transparent; font: 16px var(--ui); color: var(--ink); outline: none; -webkit-appearance: none; appearance: none; }
@@ -42,6 +42,15 @@ h1, h2, .title, .row b { font-optical-sizing: auto; font-weight: 600; } /* Fraun
 .ibtn svg { position: relative; width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .ibtn.share { margin-left: auto; } /* share sits just left of search */
 
+/* When the map can't load: a calm note in the middle of the visible map area, over the plain cream background. */
+.map-fail { position: absolute; z-index: 15; left: 50%; top: calc(env(safe-area-inset-top) + 140px); transform: translateX(-50%); width: min(86vw, 340px);
+  padding: 16px 18px; border-radius: 18px; background: var(--paper); box-shadow: var(--shadow-soft); text-align: center; font-size: 16px; color: var(--ink); }
+/* When the homes can't load at all: a retry panel. */
+.load-fail { position: absolute; z-index: 40; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(86vw, 340px); padding: 20px;
+  border-radius: 20px; background: var(--paper); box-shadow: var(--shadow); text-align: center; }
+.load-fail p { margin: 0 0 12px; font-size: 17px; }
+.load-fail button { min-height: 48px; padding: 0 24px; border-radius: 16px; background: var(--green); color: #fff; font-weight: 600; }
+
 /* Small message under the bars ("Link copied…"). Announced politely to screen readers. */
 .toast { position: absolute; z-index: 70; left: 50%; top: calc(env(safe-area-inset-top) + 176px); max-width: min(92vw, 420px); transform: translate(-50%, -8px);
   padding: 10px 16px; border-radius: 16px; background: var(--green); color: #fff; font-size: 15px; box-shadow: var(--shadow);
@@ -52,21 +61,21 @@ h1, h2, .title, .row b { font-optical-sizing: auto; font-weight: 600; } /* Fraun
 
 /* Chip pointing to the out-of-town project when it is off screen: under the filter bar, centred over the map. */
 .edge { position: absolute; z-index: 20; left: 50%; top: calc(env(safe-area-inset-top) + 10px + var(--nav-h) + 8px + 48px + 8px); transform: translateX(-50%);
-  max-width: calc(100% - 24px); height: 44px; display: flex; align-items: center; gap: 8px; padding: 0 14px 0 6px; border-radius: 22px;
-  background: rgba(255,252,247,.95); box-shadow: var(--shadow-soft); font-size: 14px; font-weight: 600; white-space: nowrap; animation: edge-in .3s ease both; }
+  width: max-content; max-width: calc(100% - 24px); min-height: 44px; display: flex; align-items: center; gap: 8px; padding: 4px 14px 4px 6px; border-radius: 22px;
+  background: rgba(255,252,247,.95); box-shadow: var(--shadow-soft); font-size: 14px; font-weight: 600; text-align: left; animation: edge-in .3s ease both; }
 .edge img, .edge i { flex: none; width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--paper); box-shadow: var(--shadow-pin); object-fit: cover; background: var(--honey); }
-.edge span { overflow: hidden; text-overflow: ellipsis; }
+.edge span { min-width: 0; overflow-wrap: anywhere; }
 .edge:active { transform: translateX(-50%) scale(.97); }
 @keyframes edge-in { from { opacity: 0; } }
 
 /* "What are you looking for?" bar, 8 px under the nav. Shows a summary of the choice once one is made. */
 .ask { position: absolute; z-index: 20; left: max(12px, env(safe-area-inset-left)); right: max(12px, env(safe-area-inset-right));
-  top: calc(env(safe-area-inset-top) + 10px + var(--nav-h) + 8px); height: 48px; display: flex; align-items: center;
+  top: calc(env(safe-area-inset-top) + 10px + var(--nav-h) + 8px); min-height: 48px; display: flex; align-items: center;
   background: rgba(255,252,247,.94); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-radius: 24px; box-shadow: var(--shadow-soft);
   opacity: 0; transform: translateY(-8px); transition: opacity .4s, transform .4s; }
 .ask.on { opacity: 1; transform: none; }
-.ask-b { flex: 1; min-width: 0; height: 48px; display: flex; align-items: center; gap: 10px; padding: 0 4px 0 16px; text-align: left; color: var(--muted); transition: transform .12s; }
-.ask-b span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ask-b { flex: 1; min-width: 0; min-height: 48px; display: flex; align-items: center; gap: 10px; padding: 6px 4px 6px 16px; text-align: left; color: var(--muted); transition: transform .12s; }
+.ask-b span { min-width: 0; overflow-wrap: anywhere; } /* wraps with large text instead of cutting off */
 .ask-b.set { color: var(--ink); font-weight: 600; }
 .ask-b svg { flex: none; width: 20px; height: 20px; fill: none; stroke: var(--green); stroke-width: 1.8; stroke-linecap: round; }
 .ask-x { flex: none; width: 44px; height: 44px; margin-right: 2px; display: grid; place-items: center; border-radius: 22px; }

@@ -5,20 +5,27 @@ import { badge, count, oneLine, possession, toPlace } from './format';
 import { Emi } from './Emi';
 import { Back, Briefcase, Cap, Car, Cross, Doc, External, Phone, Pin, Plane, Play, Share, Shield, Sparkle } from './icons';
 
-type Props = { p: Project; status: Status; zone?: Zone; brand: Brand; onBack: () => void; onShare: () => void; /** opened from the keyboard: move focus into the card */ focus?: boolean };
+type Props = { p: Project; status: Status; zone?: Zone; brand: Brand; onBack: () => void; onShare: () => void };
 type Fact = { k: string; v: string; sub?: string };
 type Btn = { href: string; label: string; icon: JSX.Element; pri?: boolean; ext?: boolean };
 const ext = { target: '_blank', rel: 'noopener' };
 const PLACE_ICON: Record<string, () => JSX.Element> = { school: Cap, hospital: Cross, jobs: Briefcase, transport: Plane };
 
-export function Card({ p, status, zone, brand, onBack, onShare, focus }: Props) {
+export function Card({ p, status, zone, brand, onBack, onShare }: Props) {
   const done = p.status === 'delivered', soon = p.status === 'upcoming';
   const [heroOk, setHeroOk] = useState(true);
   const [shown, setShown] = useState(false); // photo fades in once it has loaded
-  const back = useRef<HTMLButtonElement>(null), img = useRef<HTMLImageElement>(null);
+  const title = useRef<HTMLHeadingElement>(null), img = useRef<HTMLImageElement>(null), acts = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    if (focus) back.current?.focus({ preventScroll: true });
+    title.current?.focus({ preventScroll: true }); // screen readers start at the name; no ring after a tap (focus-visible)
     if (img.current?.complete && img.current.naturalWidth) setShown(true); // already cached
+    // With large text the sticky action bar can cover most of the card (over 60% of what is visible); then let it sit at the end instead.
+    const bar = acts.current!, sc = bar.closest('.scroller') as HTMLElement | null;
+    if (!sc) return;
+    const fit = () => bar.classList.toggle('flow', bar.offsetHeight > sc.clientHeight * 0.6);
+    const ro = new ResizeObserver(fit);
+    ro.observe(bar); ro.observe(sc);
+    return () => ro.disconnect();
   }, []);
 
   const spec = soon ? p.tagline : oneLine(p) || p.tagline;
@@ -45,15 +52,15 @@ export function Card({ p, status, zone, brand, onBack, onShare, focus }: Props) 
 
   return (
     <article class="card" aria-labelledby="card-title">
-      <button ref={back} class="back" type="button" onClick={onBack}><Back />All homes</button>
+      <button class="back" type="button" onClick={onBack}><Back />All homes</button>
       <div class="hero">
         {p.media.hero && heroOk
-          ? <img ref={img} class={shown ? 'in' : ''} src={p.media.hero} alt={p.name} loading="lazy" decoding="async"
+          ? <img ref={img} class={shown ? 'in' : ''} src={p.media.hero} alt={p.name} fetchpriority="high" decoding="async"
               onLoad={() => setShown(true)} onError={() => setHeroOk(false)} />
           : <div class="soonart"><div><Sparkle /><b>{p.name}</b><span>{soon ? 'Coming soon' : status.label}</span></div></div>}
         <span class="badge" style={{ '--c': status.color }}><i />{badge(p, status)}</span>
       </div>
-      <h2 class="title" id="card-title">{p.name}</h2>
+      <h2 class="title" id="card-title" tabIndex={-1} ref={title}>{p.name}</h2>
       {where && <div class="where"><Pin />{where}</div>}
       {spec && <p class="one">{spec}</p>}
 
@@ -100,7 +107,7 @@ export function Card({ p, status, zone, brand, onBack, onShare, focus }: Props) 
       {done && <p class="note">Built and handed over to {p.scale.units ? count(p.scale.units, 'family', 'families') : 'its families'}. Resale homes here sometimes come up. Call to ask.</p>}
       {trust && <div class="trust"><Shield />{trust}</div>}
 
-      <div class="acts">
+      <div class="acts" ref={acts}>
         <div class="lead">
           {btns.filter((b) => b.pri).map((b) => <a class="btn pri" href={b.href} {...(b.ext ? ext : {})}>{b.icon}{b.label}</a>)}
           <button class="btn share" type="button" onClick={onShare}><Share />Share with family</button>

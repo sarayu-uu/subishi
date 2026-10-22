@@ -129,7 +129,7 @@ export function Sheet({ snap, onSnap, shown, wide, contentKey, children }: Props
 
   const state = snap === 'peek' ? 'collapsed' : snap === 'half' ? 'half open' : 'fully open';
   return (
-    <section ref={sheet} class={`sheet${shown ? ' on' : ''}${snap === 'peek' && !wide ? ' lock' : ''}`} aria-label="Projects">
+    <section ref={sheet} class={`sheet${shown ? ' on' : ''}${snap === 'peek' && !wide ? ' lock' : ''}`} aria-label="Homes">
       <div class="grab" role="button" tabIndex={wide ? -1 : 0} aria-label={`Projects panel, ${state}. Press to resize.`}
         aria-expanded={snap !== 'peek'} onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp} onPointerCancel={onUp} onKeyDown={onKey} />
       <div class="scroller" ref={scroller} onScroll={onScroll}>{children}</div>
