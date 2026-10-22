@@ -80,11 +80,14 @@ export function Card({ p, status, zone, brand, onBack, onShare, focus }: Props) 
         </dl>
       )}
 
-      {!done && p.driveTimes.length > 0 && (
+      {p.driveTimes.length > 0 && (
         <div class="drive">
           <h3>How far by car</h3>
-          <ul>{p.driveTimes.map((d) => { const Icon = PLACE_ICON[d.category] ?? Car; return <li key={d.id}><Icon /><span>{toPlace(d)} · <b>{d.time}</b>{d.approx && ' approx.'}</span></li>; })}</ul>
-          <p>Estimated from distance; traffic varies.</p>
+          <ul>{p.driveTimes.map((d) => {
+            const Icon = PLACE_ICON[d.category] ?? Car;
+            return <li key={d.id}><Icon /><span class="dt"><span class="dt-1">{toPlace(d)} · <b>{d.time}</b></span>{d.area && <small>{d.area}</small>}</span></li>;
+          })}</ul>
+          <p>Estimated from distance; traffic varies.{p.driveTimes.some((d) => d.approx) && ' Some school locations are approximate.'}</p>
         </div>
       )}
 

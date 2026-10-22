@@ -8,7 +8,7 @@ export type Project = {
   approvals: { rera?: string; authority?: string }; highlights: string[];
   links: Partial<Record<'website' | 'websiteAlt' | 'video' | 'videoIntro' | 'brochure' | 'maps' | 'instagram' | 'facebook', string>>;
   media: { thumb?: string; hero?: string; pin?: string }; order: number;
-  driveTimes: { id: string; name: string; category: string; time: string; approx?: boolean }[];
+  driveTimes: { id: string; name: string; area?: string; category: string; time: string; approx?: boolean }[];
 };
 export type Zone = { id: string; label: string; order?: number; view?: { center: [number, number]; zoom: number }; outsideCity?: boolean; distanceNote?: string };
 export type Emi = { downPaymentPct: number; ratePct: number; years: number; note?: string };

@@ -147,6 +147,7 @@
   {
     "id": "jims-hospital",
     "name": "JIMS Hospital, Shamshabad",
+    "shortName": "JIMS Hospital",
     "category": "hospital",
     "tier": "nearby",
     "location": {
@@ -159,6 +160,7 @@
   {
     "id": "dps-kollur",
     "name": "Delhi Public School, Kollur",
+    "shortName": "Delhi Public School",
     "category": "school",
     "tier": "nearby",
     "location": {
@@ -183,6 +185,7 @@
   {
     "id": "sri-chaitanya-medchal",
     "name": "Sri Chaitanya School, Medchal",
+    "shortName": "Sri Chaitanya School",
     "category": "school",
     "tier": "nearby",
     "location": {
@@ -195,6 +198,7 @@
   {
     "id": "meridian-banjara",
     "name": "Meridian School, Banjara Hills",
+    "shortName": "Meridian School",
     "category": "school",
     "tier": "nearby",
     "location": {
@@ -219,6 +223,7 @@
   {
     "id": "continental-hospitals",
     "name": "Continental Hospitals, Nanakramguda",
+    "shortName": "Continental Hospitals",
     "category": "hospital",
     "tier": "nearby",
     "location": {
@@ -231,6 +236,7 @@
   {
     "id": "src-hospital",
     "name": "SRC Hospital, Shankarpally",
+    "shortName": "SRC Hospital",
     "category": "hospital",
     "tier": "nearby",
     "location": {
@@ -243,6 +249,7 @@
   {
     "id": "malla-reddy-narayana",
     "name": "Malla Reddy Narayana Hospital, Suraram",
+    "shortName": "Malla Reddy Narayana Hospital",
     "category": "hospital",
     "tier": "nearby",
     "location": {
@@ -255,6 +262,7 @@
   {
     "id": "apollo-jubilee-hills",
     "name": "Apollo Hospitals, Jubilee Hills",
+    "shortName": "Apollo Hospitals",
     "category": "hospital",
     "tier": "nearby",
     "location": {
@@ -267,6 +275,7 @@
   {
     "id": "mirra-hospital",
     "name": "Mirra Multi Specialty Hospital, Miyapur",
+    "shortName": "Mirra Hospital",
     "category": "hospital",
     "tier": "nearby",
     "location": {

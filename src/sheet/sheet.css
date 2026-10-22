@@ -85,7 +85,12 @@
 .facts dd small { display: block; font-size: 13px; font-weight: 400; color: var(--muted); }
 .drive { margin-top: 18px; }
 .drive ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
-.drive li { display: flex; align-items: center; gap: 10px; font-size: 16px; }
+.drive li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; } /* 15 px keeps the longest name on one line at 360 px */
+.drive li svg { margin-top: 2px; }
+.drive .dt { min-width: 0; display: grid; }
+/* Each place stays on one line (narrow phones get an ellipsis rather than a wrap); its area sits underneath. */
+.drive .dt-1 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.drive .dt small { font-size: 12px; line-height: 1.3; color: var(--muted); }
 .drive li svg { width: 18px; height: 18px; stroke: var(--green); stroke-width: 1.7; }
 .drive li b { font-weight: 600; white-space: nowrap; }
 .drive p { margin: 8px 0 0; font-size: 13px; color: var(--muted); }

@@ -7,7 +7,7 @@ const statuses = read('data/config/statuses.json') as { id: string }[];
 const zones = read('data/config/zones.json') as { id: string }[];
 const types = read('data/config/types.json') as { id: string }[];
 const CATEGORIES = ['transport', 'jobs', 'city', 'landmark', 'school', 'hospital', 'market', 'metro'] as const;
-type Landmark = { id: string; name: string; category: (typeof CATEGORIES)[number]; location: { lat: number; lng: number } | null; verify?: boolean };
+type Landmark = { id: string; name: string; shortName?: string; category: (typeof CATEGORIES)[number]; location: { lat: number; lng: number } | null; verify?: boolean };
 const landmarks = read('data/config/landmarks.json') as Landmark[];
 // project id → its nearby schools, then hospital (data/config/nearby.json)
 const NEAR = read('data/config/nearby.json') as Record<string, string[]>;
@@ -76,12 +76,19 @@ const out = projects.sort((a, b) => a.order - b.order).map(({ meta, ...p }) => {
   // Up to three drive times, in the order families ask: nearest school, nearest hospital, nearest job hub, then the
   // airport if a slot is still free. Landmarks without a location are skipped; ones still marked "verify" say "approx.".
   // Outside Hyderabad: just the drive to the city. None when the pin is only an area guess.
-  let driveTimes: { id: string; name: string; category: string; time: string; approx?: true }[] = [];
+  // On the card: the short name, with the area ("Continental Hospitals, Nanakramguda" → "Nanakramguda") on a second line.
+  // A school sharing the project's name (Silver Oaks) is labelled as separate, so nobody thinks it is part of the community.
+  const label = (l: Landmark) => {
+    const area = l.shortName ? l.name.split(', ').slice(1).join(', ') : '';
+    const twin = l.category === 'school' && l.name.toLowerCase().startsWith(p.name.toLowerCase());
+    return { name: l.shortName ?? l.name, ...(twin ? { area: '(separate school)' } : area ? { area } : {}) };
+  };
+  let driveTimes: { id: string; name: string; area?: string; category: string; time: string; approx?: true }[] = [];
   if (km(lat, lng, CITY.lat, CITY.lng) > 60) driveTimes = [{ id: 'city', name: 'Hyderabad city centre', category: 'city', time: drive(km(lat, lng, CITY.lat, CITY.lng)) }];
   else if (p.location.precision !== 'area') {
     const picks = [nearest(near.filter((id) => LM[id]?.category === 'school')), nearest(near.filter((id) => LM[id]?.category === 'hospital')), nearest(JOBS), 'rgia'];
     driveTimes = [...new Set(picks.filter(Boolean))].slice(0, 3)
-      .map((id) => ({ id, name: LM[id].name, category: LM[id].category, time: drive(dist(id)), ...(LM[id].verify ? { approx: true as const } : {}) }));
+      .map((id) => ({ id, ...label(LM[id]), category: LM[id].category, time: drive(dist(id)), ...(LM[id].verify ? { approx: true as const } : {}) }));
   }
   // Only list images that exist, so the app can show its placeholder instead of a broken image.
   const media: Record<string, string> = Object.fromEntries(Object.entries(p.media).filter(([, src]) => src && existsSync(`public${src}`)));
