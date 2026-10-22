@@ -81,6 +81,6 @@
     "downPaymentPct": 20,
     "ratePct": 8.0,
     "years": 20,
-    "note": "Assumed 8% (SBI home loans: 7.5–8.8%, Oct 2026). Your bank's rate may differ."
+    "note": "Assumed 8% (SBI home loans 7.5–8.8%, Oct 2026). Your bank's rate may differ."
   }
 }

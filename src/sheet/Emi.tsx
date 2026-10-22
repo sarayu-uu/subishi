@@ -30,7 +30,8 @@ function load(d: EmiDefaults): Terms {
 
 export function Emi({ price, defaults }: { price: number; defaults: EmiDefaults }) {
   const [t, setT] = useState(() => load(defaults));
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false); // steppers
+  const [info, setInfo] = useState(false); // the (i) note
   const set = (k: keyof Terms, dir: 1 | -1) => setT((cur) => {
     const s = STEP[k], next = { ...cur, [k]: Math.min(s.max, Math.max(s.min, Math.round((cur[k] + dir * s.step) * 100) / 100)) };
     try { localStorage.setItem(KEY, JSON.stringify(next)); } catch { /* not saved; still works for this visit */ }
@@ -40,11 +41,12 @@ export function Emi({ price, defaults }: { price: number; defaults: EmiDefaults 
     <div class="emi">
       <p class="emi-v">≈ <b>{rupees(monthly(price, t))}/month</b> EMI</p>
       <p class="emi-t">
-        {t.down}% down · {t.rate}% · {t.years} years.{' '}
-        {/* The note names the assumed rate, so it only fits while that rate is in use. */}
-        {t.rate === defaults.ratePct && defaults.note ? defaults.note : "Your bank's rate may differ."}{' '}
+        <span>{t.down}% down · {t.rate}% · {t.years} yrs</span>
+        <button class="emi-i" type="button" aria-label="About this estimate" aria-expanded={info} onClick={() => setInfo(!info)}><i>i</i></button>
         <button class="emi-change" type="button" aria-expanded={open} onClick={() => setOpen(!open)}>{open ? 'Done' : 'Change'}</button>
       </p>
+      {/* The note names the assumed rate, so it only fits while that rate is in use. */}
+      {info && <p class="emi-note">{t.rate === defaults.ratePct && defaults.note ? defaults.note : "Your bank's rate may differ."}</p>}
       {open && (
         <div class="emi-panel">
           {(Object.keys(STEP) as (keyof Terms)[]).map((k) => {

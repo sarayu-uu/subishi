@@ -43,12 +43,21 @@ h1, h2, .title, .row b { font-optical-sizing: auto; font-weight: 600; } /* Fraun
 .ibtn.share { margin-left: auto; } /* share sits just left of search */
 
 /* Small message under the bars ("Link copied…"). Announced politely to screen readers. */
-.toast { position: absolute; z-index: 70; left: 50%; top: calc(env(safe-area-inset-top) + 128px); max-width: min(92vw, 420px); transform: translate(-50%, -8px);
+.toast { position: absolute; z-index: 70; left: 50%; top: calc(env(safe-area-inset-top) + 176px); max-width: min(92vw, 420px); transform: translate(-50%, -8px);
   padding: 10px 16px; border-radius: 16px; background: var(--green); color: #fff; font-size: 15px; box-shadow: var(--shadow);
   opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; }
 .toast.on { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
 .toast:empty { padding: 0; }
 .toast-url { display: block; margin-top: 4px; font-weight: 600; word-break: break-all; user-select: all; -webkit-user-select: all; }
+
+/* Chip pointing to the out-of-town project when it is off screen: under the filter bar, centred over the map. */
+.edge { position: absolute; z-index: 20; left: 50%; top: calc(env(safe-area-inset-top) + 10px + var(--nav-h) + 8px + 48px + 8px); transform: translateX(-50%);
+  max-width: calc(100% - 24px); height: 44px; display: flex; align-items: center; gap: 8px; padding: 0 14px 0 6px; border-radius: 22px;
+  background: rgba(255,252,247,.95); box-shadow: var(--shadow-soft); font-size: 14px; font-weight: 600; white-space: nowrap; animation: edge-in .3s ease both; }
+.edge img, .edge i { flex: none; width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--paper); box-shadow: var(--shadow-pin); object-fit: cover; background: var(--honey); }
+.edge span { overflow: hidden; text-overflow: ellipsis; }
+.edge:active { transform: translateX(-50%) scale(.97); }
+@keyframes edge-in { from { opacity: 0; } }
 
 /* "What are you looking for?" bar, 8 px under the nav. Shows a summary of the choice once one is made. */
 .ask { position: absolute; z-index: 20; left: max(12px, env(safe-area-inset-left)); right: max(12px, env(safe-area-inset-right));
@@ -110,5 +119,6 @@ h1, h2, .title, .row b { font-optical-sizing: auto; font-weight: 600; } /* Fraun
 /* From 900 px the project list is a 392 px panel on the left; the bar and filters sit to its right. */
 @media (min-width: 900px) {
   .nav, .ask { left: 424px; right: auto; width: min(520px, calc(100% - 440px)); }
+  .edge { left: calc(50% + 204px); }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }

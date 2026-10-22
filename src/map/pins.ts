@@ -10,7 +10,7 @@ const ORDER = ['ready', 'under-construction', 'upcoming', 'delivered']; // homes
 const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => `&${({ '&': 'amp', '<': 'lt', '>': 'gt', '"': 'quot' } as Record<string, string>)[c]};`);
 const NAMES_FROM = 11; // name tags under pins from this zoom
-const RADIUS = 96; // px; a cluster of three photos and "+N" is up to ~115 px wide, so closer clusters would overlap
+const RADIUS = 110; // px; a cluster of three photos and "+N" is ~115 px wide, so anything closer would touch it
 
 /** The round picture inside a pin or a cluster: the project photo, or a drawn stand-in when there is none. */
 function face(p: Project) {

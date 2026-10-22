@@ -68,9 +68,16 @@
 .price a { color: inherit; }
 .emi { margin-top: 8px; padding: 12px 16px; border-radius: 16px; background: var(--cream); }
 .emi-v { margin: 0; font-size: 16px; }
+.emi { padding-bottom: 6px; }
 .emi-v b { font-weight: 600; color: var(--honey-text); font-variant-numeric: tabular-nums; }
-.emi-t { margin: 2px 0 0; font-size: 13px; color: var(--muted); }
-.emi-change { min-height: 44px; margin: -14px 0 -14px 2px; padding: 0 4px; font-size: 13px; font-weight: 600; color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+.emi-t { margin: 0; min-height: 44px; display: flex; align-items: center; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+.emi-change { min-height: 44px; margin-left: auto; padding: 0 4px; font-size: 13px; font-weight: 600; color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+/* (i): a 20 px circle inside a 44 px tap target */
+.emi-i { width: 44px; height: 44px; margin: 0 -8px 0 -4px; display: grid; place-items: center; }
+.emi-i i { width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid var(--muted); display: grid; place-items: center;
+  font: italic 600 12px/1 Georgia, serif; color: var(--muted); }
+.emi-i[aria-expanded="true"] i { border-color: var(--green); color: var(--green); }
+.emi-note { margin: 0 0 4px; font-size: 13px; color: var(--muted); }
 .emi-panel { margin-top: 8px; display: grid; gap: 4px; }
 .step { display: grid; grid-template-columns: 1fr 44px 92px 44px; align-items: center; font-size: 15px; }
 .step button { width: 44px; height: 44px; border-radius: 22px; font-size: 22px; line-height: 1; color: var(--green); background: var(--paper); border: 1px solid var(--line); transition: transform .12s; }

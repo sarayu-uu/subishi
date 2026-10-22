@@ -1607,11 +1607,87 @@
    }
   },
   {
-   "id": "label_town",
+   "id": "label_town_low",
    "type": "symbol",
    "source": "openmaptiles",
    "source-layer": "place",
    "minzoom": 6,
+   "filter": [
+    "all",
+    [
+     "==",
+     [
+      "get",
+      "class"
+     ],
+     "town"
+    ],
+    [
+     "!",
+     [
+      "in",
+      [
+       "coalesce",
+       [
+        "get",
+        "name:en"
+       ],
+       [
+        "get",
+        "name_en"
+       ],
+       [
+        "get",
+        "name"
+       ]
+      ],
+      [
+       "literal",
+       [
+        "Hyderabad",
+        "Secunderabad"
+       ]
+      ]
+     ]
+    ]
+   ],
+   "layout": {
+    "text-anchor": "center",
+    "text-field": [
+     "coalesce",
+     [
+      "get",
+      "name:en"
+     ],
+     [
+      "get",
+      "name_en"
+     ],
+     [
+      "get",
+      "name"
+     ]
+    ],
+    "text-font": [
+     "Noto Sans Regular"
+    ],
+    "text-max-width": 8,
+    "text-size": 11,
+    "text-letter-spacing": 0.02
+   },
+   "paint": {
+    "text-color": "#746B60",
+    "text-halo-color": "#F6F0E6",
+    "text-halo-width": 1.5
+   },
+   "maxzoom": 11
+  },
+  {
+   "id": "label_town",
+   "type": "symbol",
+   "source": "openmaptiles",
+   "source-layer": "place",
+   "minzoom": 11,
    "filter": [
     "==",
     [
@@ -1708,11 +1784,97 @@
    }
   },
   {
-   "id": "label_city",
+   "id": "label_city_low",
    "type": "symbol",
    "source": "openmaptiles",
    "source-layer": "place",
    "minzoom": 3,
+   "filter": [
+    "all",
+    [
+     "all",
+     [
+      "==",
+      [
+       "get",
+       "class"
+      ],
+      "city"
+     ],
+     [
+      "!=",
+      [
+       "get",
+       "capital"
+      ],
+      2
+     ]
+    ],
+    [
+     "!",
+     [
+      "in",
+      [
+       "coalesce",
+       [
+        "get",
+        "name:en"
+       ],
+       [
+        "get",
+        "name_en"
+       ],
+       [
+        "get",
+        "name"
+       ]
+      ],
+      [
+       "literal",
+       [
+        "Hyderabad",
+        "Secunderabad"
+       ]
+      ]
+     ]
+    ]
+   ],
+   "layout": {
+    "text-anchor": "center",
+    "text-field": [
+     "coalesce",
+     [
+      "get",
+      "name:en"
+     ],
+     [
+      "get",
+      "name_en"
+     ],
+     [
+      "get",
+      "name"
+     ]
+    ],
+    "text-font": [
+     "Noto Sans Regular"
+    ],
+    "text-max-width": 8,
+    "text-size": 13
+   },
+   "paint": {
+    "text-color": "#746B60",
+    "text-halo-color": "#F6F0E6",
+    "text-halo-width": 1.5
+   },
+   "maxzoom": 11
+  },
+  {
+   "id": "label_city",
+   "type": "symbol",
+   "source": "openmaptiles",
+   "source-layer": "place",
+   "minzoom": 11,
    "filter": [
     "all",
     [
@@ -1762,11 +1924,97 @@
    }
   },
   {
-   "id": "label_city_capital",
+   "id": "label_city_capital_low",
    "type": "symbol",
    "source": "openmaptiles",
    "source-layer": "place",
    "minzoom": 3,
+   "filter": [
+    "all",
+    [
+     "all",
+     [
+      "==",
+      [
+       "get",
+       "class"
+      ],
+      "city"
+     ],
+     [
+      "==",
+      [
+       "get",
+       "capital"
+      ],
+      2
+     ]
+    ],
+    [
+     "!",
+     [
+      "in",
+      [
+       "coalesce",
+       [
+        "get",
+        "name:en"
+       ],
+       [
+        "get",
+        "name_en"
+       ],
+       [
+        "get",
+        "name"
+       ]
+      ],
+      [
+       "literal",
+       [
+        "Hyderabad",
+        "Secunderabad"
+       ]
+      ]
+     ]
+    ]
+   ],
+   "layout": {
+    "text-anchor": "center",
+    "text-field": [
+     "coalesce",
+     [
+      "get",
+      "name:en"
+     ],
+     [
+      "get",
+      "name_en"
+     ],
+     [
+      "get",
+      "name"
+     ]
+    ],
+    "text-font": [
+     "Noto Sans Regular"
+    ],
+    "text-max-width": 8,
+    "text-size": 13
+   },
+   "paint": {
+    "text-color": "#746B60",
+    "text-halo-color": "#F6F0E6",
+    "text-halo-width": 1.5
+   },
+   "maxzoom": 11
+  },
+  {
+   "id": "label_city_capital",
+   "type": "symbol",
+   "source": "openmaptiles",
+   "source-layer": "place",
+   "minzoom": 11,
    "filter": [
     "all",
     [

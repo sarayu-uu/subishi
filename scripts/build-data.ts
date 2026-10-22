@@ -94,7 +94,10 @@ const out = projects.sort((a, b) => a.order - b.order).map(({ meta, ...p }) => {
   const media: Record<string, string> = Object.fromEntries(Object.entries(p.media).filter(([, src]) => src && existsSync(`public${src}`)));
   // Round photo for the map pin, made by `npm run pins`.
   if (existsSync(`public/img/projects/${p.id}/pin.webp`)) media.pin = `/img/projects/${p.id}/pin.webp`;
-  return { ...p, media, driveTimes };
+  // A highlight that names a place already in the drive times only repeats it ("20 min to Indus International School").
+  const shown = driveTimes.flatMap((d) => [LM[d.id]?.name, LM[d.id]?.shortName, d.name]).filter(Boolean).map((n) => n!.toLowerCase());
+  const highlights = p.highlights.filter((h) => !shown.some((n) => h.toLowerCase().includes(n)));
+  return { ...p, media, driveTimes, highlights };
 });
 
 mkdirSync('public/data', { recursive: true });

@@ -33,8 +33,11 @@ export function Card({ p, status, zone, brand, onBack, onShare, focus }: Props) 
   const L = p.links, phone = brand.contact?.phone, phoneText = brand.contact?.phoneDisplay;
   const video = L.video ? (soon ? 'Watch the reveal' : p.status === 'under-construction' ? 'Watch progress' : 'Watch video') : '';
   const btns: Btn[] = [];
-  if (L.video) btns.push({ href: L.video, label: video, icon: <Play />, pri: true, ext: true });
-  if (L.website) btns.push({ href: L.website, label: 'Visit site', icon: <External />, pri: !L.video, ext: true });
+  // Built by Subishi: homes there only change hands on resale, so calling is the useful first step.
+  const callFirst = done && !!phone;
+  if (callFirst) btns.push({ href: `tel:${phone}`, label: 'Call', icon: <Phone />, pri: true });
+  if (L.video) btns.push({ href: L.video, label: video, icon: <Play />, pri: !callFirst, ext: true });
+  if (L.website) btns.push({ href: L.website, label: 'Visit site', icon: <External />, pri: !callFirst && !L.video, ext: true });
   if (L.brochure) btns.push({ href: L.brochure, label: 'Brochure', icon: <Doc />, ext: true });
   if (!soon) btns.push({ href: `https://www.google.com/maps/dir/?api=1&destination=${p.location.lat},${p.location.lng}`, label: 'Directions', icon: <Pin />, ext: true });
   if (!done && phone) btns.push({ href: `tel:${phone}`, label: 'Call', icon: <Phone /> });
@@ -94,7 +97,7 @@ export function Card({ p, status, zone, brand, onBack, onShare, focus }: Props) 
       {p.highlights.length > 0 && (
         <div class="hl"><h3>{done ? 'About' : 'Highlights'}</h3><div>{p.highlights.map((h) => <span>{h}</span>)}</div></div>
       )}
-      {done && <p class="note">Built and handed over to {p.scale.units ? count(p.scale.units, 'family', 'families') : 'its families'}. Homes here are sold only on resale.</p>}
+      {done && <p class="note">Built and handed over to {p.scale.units ? count(p.scale.units, 'family', 'families') : 'its families'}. Resale homes here sometimes come up. Call to ask.</p>}
       {trust && <div class="trust"><Shield />{trust}</div>}
 
       <div class="acts">
@@ -106,7 +109,7 @@ export function Card({ p, status, zone, brand, onBack, onShare, focus }: Props) 
         <div class="more">
           {btns.filter((b) => !b.pri).map((b) => <a class="btn" href={b.href} {...(b.ext ? ext : {})}>{b.icon}{b.label}</a>)}
         </div>
-        {!done && phoneText && <p class="call">Call us: <b>{phoneText}</b></p>}
+        {phoneText && <p class="call">Call us: <b>{phoneText}</b></p>}
       </div>
     </article>
   );

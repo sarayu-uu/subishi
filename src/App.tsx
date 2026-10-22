@@ -10,6 +10,7 @@ import { FilterPanel } from './filters/FilterPanel';
 import { ANY, fits, summary, type Choice } from './filters/filters';
 import { choiceFrom, fromChoice, hasState, read, toShareUrl, write, type ViewState } from './urlState';
 import { share } from './share';
+import { HYDERABAD } from './map/telangana';
 
 const START = performance.now();
 const WIDE = matchMedia('(min-width: 900px)');
@@ -22,6 +23,12 @@ type Toast = { text: string; url?: string } | null;
 // Half the size of the widest marker (a three-photo cluster with "+N") and the caption under a cluster,
 // so fitting the project points keeps whole markers 24 px clear of every edge, the bars and the sheet.
 const MARK_HALF_W = 60, MARK_HALF_H = 24, CAPTION = 32, EDGE = 24;
+const easeInOut = (t: number) => (t < 0.5 ? 4 * t ** 3 : 1 - (-2 * t + 2) ** 3 / 2);
+/** Straight-line distance in km. */
+const km = (a: { lat: number; lng: number }, b: { lat: number; lng: number }) => {
+  const r = Math.PI / 180, dl = (b.lat - a.lat) * r, dg = (b.lng - a.lng) * r;
+  return 2 * 6371 * Math.asin(Math.sqrt(Math.sin(dl / 2) ** 2 + Math.cos(a.lat * r) * Math.cos(b.lat * r) * Math.sin(dg / 2) ** 2));
+};
 
 export function App() {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -47,6 +54,23 @@ export function App() {
   const chosen = summary(choice);
   const selected = data?.projects.find((p) => p.id === selectedId) ?? null;
 
+  // Out-of-town project (Kamareddy Castles): a chip under the filter bar points to it whenever it is off screen.
+  const far = data?.projects.find((p) => data.zones.find((z) => z.id === p.zone)?.outsideCity);
+  const farZone = far && data!.zones.find((z) => z.id === far.zone);
+  const [farDir, setFarDir] = useState<string | null>(null); // arrow towards it, or null while it is on screen
+  const checkFar = () => {
+    const m = map.current;
+    if (!m || !far) return setFarDir(null);
+    const pt = m.project([far.location.lng, far.location.lat]), c = covered(live.current.snap);
+    const { clientWidth: w, clientHeight: h } = m.getContainer();
+    const top = TOP, bottom = h - c.bottom, left = c.left;
+    if (pt.x >= left && pt.x <= w && pt.y >= top && pt.y <= bottom) return setFarDir(null);
+    // Point the arrow the way you would have to pan.
+    setFarDir(pt.y < top ? '↑' : pt.y > bottom ? '↓' : pt.x < left ? '←' : '→');
+  };
+  const checkFarRef = useRef(checkFar);
+  checkFarRef.current = checkFar;
+
   /** The view as a URL state: map position, open project, filters, sheet height. */
   const live = useRef({ selectedId, snap, choice });
   live.current = { selectedId, snap, choice };
@@ -65,7 +89,8 @@ export function App() {
     if (!m) return;
     const c = covered(s);
     const zoom = Math.max(m.getZoom(), 12, pinsApi.current?.zoomFor(p.id) ?? 13);
-    m.easeTo({ center: [p.location.lng, p.location.lat], zoom, offset: [c.left / 2, (TOP - c.bottom) / 2], duration: reduced() ? 0 : 700 });
+    // flyTo arcs out and back in, which reads better than a straight slide when the project is far away (Kamareddy).
+    m.flyTo({ center: [p.location.lng, p.location.lat], zoom, offset: [c.left / 2, (TOP - c.bottom) / 2], maxDuration: 1600, ...(reduced() ? { duration: 0 } : {}) });
   }
 
   const closeSearch = () => { setSearching(false); setQuery(''); };
@@ -126,7 +151,7 @@ export function App() {
           map.current = m;
           pinsApi.current = createPins(m, index.projects, index.statuses, (id) => openRef.current(index.projects.find((p) => p.id === id)!));
           pinsApi.current.setFilter((p) => filterRef.current(p)); // filters may have changed while the map loaded
-          m.on('moveend', () => syncRef.current());
+          m.on('moveend', () => { syncRef.current(); checkFarRef.current(); });
         }
       } catch { m = null; /* the list view still works without the map */ }
 
@@ -138,12 +163,12 @@ export function App() {
         land: (mm, duration) => {
           if (at) mm.jumpTo({ center: at.center, zoom: at.zoom ?? mm.getZoom() });
           else if (!linked) {
-            // Every project on the map, Kamareddy included. A smooth flight (not linear) at a brisk speed skips
-            // most in-between zoom levels, so fewer tiles are fetched on the way.
-            const lng = index.projects.map((p) => p.location.lng), lat = index.projects.map((p) => p.location.lat);
+            // Every project within 60 km of Hyderabad (so not Kamareddy Castles; the edge chip points to it).
+            const city = index.projects.filter((p) => km(p.location, HYDERABAD) <= 60);
+            const lng = city.map((p) => p.location.lng), lat = city.map((p) => p.location.lat);
             mm.fitBounds([[Math.min(...lng), Math.min(...lat)], [Math.max(...lng), Math.max(...lat)]], {
               padding: { top: TOP + EDGE + MARK_HALF_H, bottom: c.bottom + EDGE + MARK_HALF_H + CAPTION, left: c.left + EDGE + MARK_HALF_W, right: EDGE + MARK_HALF_W },
-              linear: false, curve: 1.2, speed: 1.4, maxDuration: duration, ...(duration ? {} : { duration: 0 }), essential: true,
+              duration, easing: easeInOut, essential: true,
             });
           }
           // a project link without a position: open() below centres its pin
@@ -162,7 +187,7 @@ export function App() {
 
   useEffect(() => { pinsApi.current?.setFilter(shownOk); }, [choice, query]);
   useEffect(() => { pinsApi.current?.select(selectedId); }, [selectedId]);
-  useEffect(() => { sync(); }, [selectedId, snap, choice]);
+  useEffect(() => { sync(); checkFar(); }, [selectedId, snap, choice]);
   useEffect(() => { if (searching) searchRef.current?.focus(); }, [searching]);
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -240,6 +265,12 @@ export function App() {
             : <List projects={shown} total={data.projects.length} statuses={data.statuses} zones={data.zones} searching={!!query.trim()} filtered={!!chosen}
                 photos={wide || snap !== 'peek'} onSelect={open} onZone={fitZone} onReset={reset} />}
         </Sheet>
+      )}
+      {far && farDir && ui && !searching && shownOk(far) && (
+        <button class="edge" onClick={() => open(far)} aria-label={`${far.name}, ${farZone?.distanceNote ?? 'outside Hyderabad'}. Show it on the map`}>
+          {far.media.pin ? <img src={far.media.pin} alt="" /> : <i />}
+          <span>{far.name} · {farZone?.distanceNote?.match(/\d+\s*km\s+\w+/)?.[0] ?? 'outside Hyderabad'} {farDir}</span>
+        </button>
       )}
       <div class={`toast${toast ? ' on' : ''}`} role="status" aria-live="polite">
         {toast && <>{toast.text}{toast.url && <span class="toast-url">{toast.url}</span>}</>}
